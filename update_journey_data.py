@@ -44,24 +44,23 @@ class NreLdbClient:
         self.client = Client(WSDL_URL, transport=transport, settings=settings)
         
         # --- FIX FOR NAMESPACE ERROR ---
-        # The TokenValue type is defined in a separate XSD, which Zeep doesn't always 
-        # resolve correctly when using get_type(). We use the WSDL's binding and schema 
-        # definitions to explicitly find the required TokenValue type.
+        # The correct type is 'AccessToken', which contains the 'TokenValue'.
+        # The lookup error provided the correct type: 'AccessToken'
         token_factory = self.client.type_factory('http://thalesgroup.com/RTTI/2013-11-28/Token/types')
-        TokenValue = token_factory.TokenValue
+        AccessTokenType = token_factory.AccessToken
         # --- END FIX ---
         
         # Create the SOAP header structure required by OpenLDBWS
         header_data = {'TokenValue': self.token}
-        self.header = TokenValue(header_data)
+        # The structure is <AccessToken><TokenValue>...</TokenValue></AccessToken>
+        self.header = AccessTokenType(header_data)
 
 
     def get_departure_board_with_details(self, crs, filter_crs=None):
         """Calls the GetDepBoardWithDetails API method."""
         try:
             # The service call requires the header for authentication
-            # Note: The AccessToken tag itself is in a different namespace, 
-            # so we let Zeep handle the final SOAP header wrapping.
+            # We pass the constructed AccessToken object as the header content.
             board = self.client.service.GetDepBoardWithDetails(
                 _soapheaders={'AccessToken': self.header},
                 numRows=NUM_ROWS,
@@ -79,7 +78,7 @@ class NreLdbClient:
             print(f"ERROR: Failed to connect or retrieve data for CRS {crs}: {e}")
             return None
 
-# --- Data Processing Functions ---
+# --- Data Processing Functions (Remainder of file is unchanged) ---
 
 def parse_nre_service(service_data, origin_crs, destination_crs=None):
     """
