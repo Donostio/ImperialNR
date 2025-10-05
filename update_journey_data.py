@@ -1,6 +1,8 @@
 import os
 import json
 from datetime import datetime, timedelta
+# Import lxml for manual header construction
+from lxml import etree 
 from zeep import Client, Settings, Transport
 from zeep.exceptions import Fault
 from requests import Session
@@ -43,24 +45,30 @@ class NreLdbClient:
         transport = Transport(session=session)
         self.client = Client(WSDL_URL, transport=transport, settings=settings)
         
-        # --- FIX FOR NAMESPACE ERROR ---
-        # The correct type is 'AccessToken', which contains the 'TokenValue'.
-        # The lookup error provided the correct type: 'AccessToken'
-        token_factory = self.client.type_factory('http://thalesgroup.com/RTTI/2013-11-28/Token/types')
-        AccessTokenType = token_factory.AccessToken
-        # --- END FIX ---
+        # --- FIX: Manually construct the SOAP header using lxml.etree ---
+        # This bypasses the zeep serialization bug and reliably creates the header:
+        # <AccessToken xmlns="http://thalesgroup.com/RTTI/2013-11-28/Token/types">
+        #    <TokenValue>YOUR_TOKEN</TokenValue>
+        # </AccessToken>
         
-        # Create the SOAP header structure required by OpenLDBWS
-        header_data = {'TokenValue': self.token}
-        # The structure is <AccessToken><TokenValue>...</TokenValue></AccessToken>
-        self.header = AccessTokenType(header_data)
+        NS_TOKEN = 'http://thalesgroup.com/RTTI/2013-11-28/Token/types'
+        
+        # 1. Create the AccessToken element with the correct namespace
+        token_access = etree.Element(etree.QName(NS_TOKEN, 'AccessToken'))
+        
+        # 2. Create the TokenValue sub-element and set its text to the actual token
+        token_value = etree.SubElement(token_access, 'TokenValue')
+        token_value.text = self.token
+        
+        # Set the manually constructed element as the header
+        self.header = token_access
+        # --- END FIX ---
 
 
     def get_departure_board_with_details(self, crs, filter_crs=None):
         """Calls the GetDepBoardWithDetails API method."""
         try:
-            # The service call requires the header for authentication
-            # We pass the constructed AccessToken object as the header content.
+            # We pass the manually constructed lxml element here
             board = self.client.service.GetDepBoardWithDetails(
                 _soapheaders={'AccessToken': self.header},
                 numRows=NUM_ROWS,
@@ -75,6 +83,7 @@ class NreLdbClient:
             print(f"ERROR: SOAP Fault occurred for CRS {crs}: {e}")
             return None
         except Exception as e:
+            # Catch other connection/serialization errors
             print(f"ERROR: Failed to connect or retrieve data for CRS {crs}: {e}")
             return None
 
