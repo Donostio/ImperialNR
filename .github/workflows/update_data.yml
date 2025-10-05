@@ -1,4 +1,4 @@
-name: Update Live NRE Journey Data
+name: Update Live TFL Journey Data
 
 on:
   schedule:
@@ -18,23 +18,26 @@ jobs:
         with:
           python-version: "3.x"
 
-      - name: Install dependencies (including zeep)
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run NRE data update script
+      - name: Run TFL data update script
         run: python update_journey_data.py
         env:
-          # Set Time Zone for accurate time calculations in the script
+          # Set Time Zone to Europe/London (BST/GMT) to correct the 1-hour offset for datetime.now()
           TZ: Europe/London 
-          # NRE LDB Token for OpenLDBWS API
-          LDB_TOKEN: ${{ secrets.LDB_TOKEN }} # Uses your new token
+          # TFL API credentials (optional but recommended for higher rate limits)
+          TFL_APP_ID: ${{ secrets.TFL_APP_ID }}
+          TFL_APP_KEY: ${{ secrets.TFL_APP_KEY }}
+          # 🚨 FIX: Pass National Rail Token from secrets 
+          LDB_TOKEN: ${{ secrets.LDB_TOKEN }} 
 
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "AUTO: Update NRE journey data with platform info"
+          commit_message: "AUTO: Update TFL journey data"
           file_pattern: live_data.json
           commit_user_name: GitHub Actions Bot
           commit_user_email: actions@github.com
