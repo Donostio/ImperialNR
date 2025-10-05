@@ -1,11 +1,19 @@
 import os
 import json
+import logging # New Import
 from datetime import datetime, timedelta
-# Import lxml for manual header construction
+# Import lxml for manual header construction (Required)
 from lxml import etree 
 from zeep import Client, Settings, Transport
 from zeep.exceptions import Fault
 from requests import Session
+
+# --- Logging Setup ---
+# Set up logging to show the raw SOAP request and response XML
+logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
+# Increase verbosity for zeep transport layer to show the XML message
+logging.getLogger('zeep.transports').setLevel(logging.DEBUG) 
+# ---------------------
 
 # --- Configuration ---
 # Your NRE OpenLDBWS Token (Use environment variable for security in production)
@@ -46,10 +54,7 @@ class NreLdbClient:
         self.client = Client(WSDL_URL, transport=transport, settings=settings)
         
         # --- FIX: Manually construct the SOAP header using lxml.etree ---
-        # This bypasses the zeep serialization bug and reliably creates the header:
-        # <AccessToken xmlns="http://thalesgroup.com/RTTI/2013-11-28/Token/types">
-        #    <TokenValue>YOUR_TOKEN</TokenValue>
-        # </AccessToken>
+        # This bypasses the zeep serialization bug and reliably creates the header.
         
         NS_TOKEN = 'http://thalesgroup.com/RTTI/2013-11-28/Token/types'
         
@@ -87,7 +92,7 @@ class NreLdbClient:
             print(f"ERROR: Failed to connect or retrieve data for CRS {crs}: {e}")
             return None
 
-# --- Data Processing Functions (Remainder of file is unchanged) ---
+# --- Data Processing Functions (Unchanged) ---
 
 def parse_nre_service(service_data, origin_crs, destination_crs=None):
     """
@@ -176,7 +181,7 @@ def combine_and_format_journeys(direct_data, stitched_data):
     # Limit to NUM_JOURNEYS segments
     return final_output[:NUM_JOURNEYS]
 
-# --- Main Logic Functions ---
+# --- Main Logic Functions (Unchanged) ---
 
 def get_direct_journeys(client):
     """Fetches direct STR -> IMW services and formats them."""
@@ -357,10 +362,11 @@ def get_one_change_journeys(client):
 
 def main():
     """Main execution function to fetch, process, and save data."""
-    if LDB_TOKEN == "YOUR_TOKEN": # Safety check if user didn't update config
-        print("ERROR: Please set the LDB_TOKEN environment variable with your NRE token.")
-        return
-
+    # Safety check if user didn't update config
+    if LDB_TOKEN == "8aaaf362-b5d6-4886-c123-08e137bd4a7b": 
+        print("🚨 WARNING: The script is using the **default placeholder LDB_TOKEN**. This token is likely restricted or invalid.")
+        print("Please ensure your LDB_TOKEN secret in GitHub is set to your personal, valid National Rail token.")
+        
     client = NreLdbClient(LDB_TOKEN)
     
     # 1. Get all Direct Journeys
