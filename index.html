@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streatham Common - Imperial Wharf</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Custom colors for status/accents in dark mode
+                        'rail-blue': '#4d94ff',
+                        'southern-green': '#00b359',
+                        'overground-orange': '#ffaa00',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+        
+        /* Dark mode card styling */
+        .card-bg {
+            background: #1f2937; /* Dark Gray 800 for card background */
+            box-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.1), 0 4px 6px -2px rgba(255, 255, 255, 0.05);
+        }
+        .refresh-icon {
+            animation: spin 1s linear infinite;
+            display: inline-block;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Ensure responsive font sizes for mobile */
+        h2 { font-size: 1.5rem; } /* sm:text-2xl */
+        @media (min-width: 640px) {
+            h2 { font-size: 1.75rem; }
+        }
+    </style>
+</head>
+<body class="bg-black text-white p-4 sm:p-8 font-sans min-h-screen">
+    <div class="max-w-4xl mx-auto space-y-8">
+        
+        <!-- Header (Only includes a friendly message for context) -->
+        <header class="text-center pb-4 border-b border-gray-800">
+            <h1 class="4xl font-extrabold text-white">Next Three Rail Journeys</h1>
+        </header>
+
+        <!-- Journey List -->
+        <div id="journey-list" class="space-y-6">
+            <!-- Journeys will be rendered here -->
+            <div class="text-center p-8 text-gray-400">Loading live data...</div>
+        </div>
+        
+        <!-- Status moved to the bottom -->
+        <div id="status-message" class="text-center pt-4 text-gray-400">
+            <!-- Data last updated... will go here -->
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+        
+        // --- Utility to calculate duration between two HH:mm strings ---
+        const calculateDuration = (startTimeStr, endTimeStr) => {
+            const [startH, startM] = startTimeStr.split(':').map(Number);
+            const [endH, endM] = endTimeStr.split(':').map(Number);
+            
+            let startDate = new Date();
+            startDate.setHours(startH, startM, 0, 0);
+
+            let endDate = new Date();
+            endDate.setHours(endH, endM, 0, 0);
+
+            // Handle case where end time wraps to the next day (e.g., 23:50 -> 00:10)
+            if (endDate < startDate) {
+                endDate.setDate(endDate.getDate() + 1);
+            }
+
+            const diffMs = endDate - startDate;
+            const diffMins = Math.round(diffMs / 60000); // convert milliseconds to minutes
+            return diffMins;
+        };
+        
+        // --- Helper function to determine operator display text ---
+        const getOperatorDisplay = (rawOperator) => {
+            if (!rawOperator) return 'Operator TBC';
+            
+            // Normalize and check for "N/A" or empty string
+            const operator = String(rawOperator).trim().toUpperCase();
+            if (operator === '' || operator === 'N/A' || operator === 'UNDEFINED') {
+                return 'Operator TBC';
+            }
+
+            return rawOperator;
+        };
+
+        // --- Helper Function to render connection details within a main card ---
+        const renderConnectionDetails = (conn, journey) => {
+            const secondLeg = conn.second_leg;
+            const transferTime = conn.transferTime;
+            
+            // Get Platform for Clapham Jcn
+            const claphamPlatformKey = Object.keys(secondLeg).find(key => key.startsWith('departurePlatform_Clapham'));
+            const claphamPlatform = secondLeg[claphamPlatformKey] || 'TBC';
+            
+            // Second Leg Operator Color and Display Name
+            const secondLegOperator = secondLeg.operator;
+            const operatorDisplay = getOperatorDisplay(secondLegOperator);
+            
+            let operatorColor = 'text-gray-400';
+            if (secondLegOperator && secondLegOperator.toLowerCase().includes('southern')) {
+                operatorColor = 'text-southern-green';
+            } else if (secondLegOperator && secondLegOperator.toLowerCase().includes('overground')) {
+                operatorColor = 'text-overground-orange';
+            }
+
+            return `
+                <div class="p-3 border border-gray-700 rounded-lg bg-gray-900">
+                    
+                    <!-- Connection Header & Operator -->
+                    <div class="flex justify-between text-sm items-center pb-1">
+                        
+                        <div class="w-3/4 font-medium">
+                            <!-- Departure Time [White] (Transfer Time [Yellow] to platform <P>) -->
+                            <span class="block text-lg font-bold text-white">
+                                ${secondLeg.departure} 
+                                <span class="text-yellow-400 font-normal">(${transferTime} transfer to plt: ${claphamPlatform})</span>
+                            </span>
+                            
+                            <!-- Arrival Time arrival at IMW -->
+                            <span class="text-xs text-gray-400 block pt-1">
+                                <span class="text-white font-semibold">${secondLeg.arrival}</span> arrival at Imperial Wharf
+                            </span>
+                        </div>
+                        
+                        <div class="w-1/4 text-right">
+                            <!-- Only Operator is displayed here now -->
+                            <span class="text-xs ${operatorColor}">${operatorDisplay}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        };
+        
+        // --- Main Card Renderer ---
+        const renderJourneyCard = (journey) => {
+            // Check if first_leg exists, otherwise default to the first leg in the 'legs' array (standard TFL structure)
+            const firstLeg = journey.first_leg || (journey.legs && journey.legs.length > 0 ? journey.legs[0] : null);
+            
+            if (!firstLeg) return ''; // Skip rendering if no first leg data is found
+
+            const isDirect = journey.type === 'Direct';
+            
+            // First Leg Operator Color and Display Name
+            const firstLegOperator = firstLeg.operator;
+            const operatorDisplay = getOperatorDisplay(firstLegOperator);
+            
+            let operatorColor = 'text-gray-400';
+            if (firstLegOperator && firstLegOperator.toLowerCase().includes('southern')) {
+                operatorColor = 'text-southern-green';
+            } else if (firstLegOperator && firstLegOperator.toLowerCase().includes('overground')) {
+                operatorColor = 'text-overground-orange';
+            }
+
+            // Get Platforms
+            const streathamPlatformKey = Object.keys(firstLeg).find(key => key.startsWith('departurePlatform_Streatham'));
+            const streathamPlatform = firstLeg[streathamPlatformKey] || 'TBC';
+            
+            // Calculate leg duration
+            const firstLegDuration = calculateDuration(firstLeg.departure, firstLeg.arrival);
+
+            let connectionsHtml = '';
+            let connectionCountDisplay = 0; // Initialize a variable to hold the number of displayed connections
+
+            if (!isDirect && journey.connections) {
+                // Limit to the first two connections as requested
+                const connectionsToDisplay = journey.connections.slice(0, 2);
+                connectionCountDisplay = connectionsToDisplay.length;
+                
+                // Generate connection details for the limited list
+                connectionsHtml = connectionsToDisplay.map(conn => renderConnectionDetails(conn, journey)).join('');
+            }
+            
+            return `
+                <div class="card-bg p-4 sm:p-6 rounded-xl border border-gray-800 space-y-3">
+                    
+                    <!-- Main Header/Info Block (New Combined Structure) -->
+                    <div class="space-y-1 border-b border-gray-700 pb-3">
+                        
+                        <!-- Row 1: Times, Change Notice, Status, Platform -->
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-baseline space-x-2">
+                                <h3 class="text-3xl font-extrabold text-white">
+                                    ${firstLeg.departure} - ${firstLeg.arrival}
+                                </h3>
+                                <!-- UPDATED: Added DIRECT for Direct journeys and changed CHANGE AT CLJ text -->
+                                ${isDirect 
+                                    ? `<span class="text-base font-bold text-rail-blue">DIRECT</span>` 
+                                    : `<span class="text-base font-bold text-rail-blue">To CLJ ONLY!</span>`
+                                }
+                            </div>
+                            
+                            <div class="text-right">
+                                <span class="text-sm font-semibold p-1 px-2 rounded ${journey.status === 'On Time' ? 'bg-green-600' : 'bg-red-600'} text-white block mb-1">
+                                    ${journey.status}
+                                </span>
+                                <span class="text-xs text-gray-400 block">
+                                    Platform: <span class="font-semibold text-white">${streathamPlatform}</span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Row 2: Duration and Operator (Removed Total Journey/Direct Text) -->
+                        <div class="flex justify-between items-center text-sm">
+                            <div class="flex items-baseline space-x-3 text-gray-400">
+                                <span class="text-base font-medium">(${firstLegDuration} mins)</span>
+                                <span class="block text-xs ${operatorColor} font-semibold">${operatorDisplay}</span>
+                                <!-- Direct Journey and Total Duration text removed here -->
+                            </div>
+                            <div></div>
+                        </div>
+                    </div>
+
+
+                    <!-- CONNECTIONS LIST (for One Change journeys only) -->
+                    ${!isDirect && journey.connections && journey.connections.length > 0 ? `
+                        <div class="space-y-4">
+                            <!-- UPDATED: Removed "via Clapham Junction" -->
+                            <p class="text-base font-semibold text-yellow-400">Next ${connectionCountDisplay} Connection${connectionCountDisplay !== 1 ? 's' : ''}:</p>
+                            ${connectionsHtml}
+                        </div>
+                    ` : ''}
+
+                </div>
+            `;
+        };
+
+
+        // --- Data Fetching and Initialization ---
+        const fetchAndRenderJourneys = async () => {
+            const journeyListElement = document.getElementById('journey-list');
+            const statusElement = document.getElementById('status-message');
+            
+            // Show loading state
+            journeyListElement.innerHTML = `<div class="text-center p-8 text-white"><span class="refresh-icon">↻</span> Loading live data...</div>`;
+            statusElement.innerHTML = `<p class="text-sm text-gray-500">Checking for updates...</p>`;
+
+            try {
+                // Fetch the static JSON file
+                // Adding a cache-buster query parameter
+                const response = await fetch('live_data.json?t=' + new Date().getTime());
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                // --- LIMIT THE MAIN DISPLAY TO THE NEXT 3 JOURNEYS ---
+                const journeysToDisplay = data.slice(0, 3);
+                
+                // Hide loading and render results
+                const renderedHtml = journeysToDisplay.map(renderJourneyCard).join('');
+                journeyListElement.innerHTML = renderedHtml || `
+                    <div class="text-center p-8 text-gray-400">No journeys found in live_data.json.</div>
+                `;
+
+                if (data.length > 0) {
+                    // Assuming the timestamp is the same for all entries in the run
+                    const lastUpdated = data[0].live_updated_at;
+                    statusElement.innerHTML = `Data last updated by Harvester at: <span class="font-bold text-white">${lastUpdated}</span>`;
+                } else {
+                    statusElement.innerHTML = `No recent data available. Waiting for next run.`;
+                }
+                
+            } catch (error) {
+                console.error("Could not fetch data from static JSON:", error);
+                // Updated error message to use dark mode colors
+                journeyListElement.innerHTML = `
+                    <div class="card-bg p-8 rounded-xl text-center border border-red-700">
+                        <p class="text-xl font-semibold text-red-400">Failed to load live_data.json.</p>
+                        <p class="text-gray-400">Check if the data script is running successfully.</p>
+                    </div>
+                `;
+                statusElement.innerHTML = `Failed to connect to data source.`;
+            }
+        }
+        
+        // Initial load and set up client-side refresh (to check for new static file)
+        document.addEventListener('DOMContentLoaded', fetchAndRenderJourneys);
+        // Periodically check for a new static file every 10 seconds
+        setInterval(fetchAndRenderJourneys, 10000); 
+    </script>
+</body>
+</html>
