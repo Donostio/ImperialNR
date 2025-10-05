@@ -1,9 +1,8 @@
 import os
 import json
 from datetime import datetime, timedelta
-from zeep import Client, Settings
+from zeep import Client, Settings, Transport
 from zeep.exceptions import Fault
-from zeep.transports import Transport
 from requests import Session
 
 # --- Configuration ---
@@ -44,14 +43,25 @@ class NreLdbClient:
         transport = Transport(session=session)
         self.client = Client(WSDL_URL, transport=transport, settings=settings)
         
+        # --- FIX FOR NAMESPACE ERROR ---
+        # The TokenValue type is defined in a separate XSD, which Zeep doesn't always 
+        # resolve correctly when using get_type(). We use the WSDL's binding and schema 
+        # definitions to explicitly find the required TokenValue type.
+        token_factory = self.client.type_factory('http://thalesgroup.com/RTTI/2013-11-28/Token/types')
+        TokenValue = token_factory.TokenValue
+        # --- END FIX ---
+        
         # Create the SOAP header structure required by OpenLDBWS
         header_data = {'TokenValue': self.token}
-        self.header = self.client.get_type('TokenValue')(header_data)
+        self.header = TokenValue(header_data)
+
 
     def get_departure_board_with_details(self, crs, filter_crs=None):
         """Calls the GetDepBoardWithDetails API method."""
         try:
             # The service call requires the header for authentication
+            # Note: The AccessToken tag itself is in a different namespace, 
+            # so we let Zeep handle the final SOAP header wrapping.
             board = self.client.service.GetDepBoardWithDetails(
                 _soapheaders={'AccessToken': self.header},
                 numRows=NUM_ROWS,
@@ -62,6 +72,7 @@ class NreLdbClient:
             )
             return board
         except Fault as e:
+            # Print the fault details, often helpful for debugging
             print(f"ERROR: SOAP Fault occurred for CRS {crs}: {e}")
             return None
         except Exception as e:
@@ -171,9 +182,8 @@ def get_direct_journeys(client):
 
     direct_journeys = []
     for service in board.trainServices.service:
-        # Passing destination_crs=None since the board is already filtered, 
-        # but we need to ensure the service structure is fully available.
-        leg_data = parse_nre_service(service, ORIGIN_CRS)
+        # Pass DESTINATION_CRS to find the specific arrival time at Imperial Wharf
+        leg_data = parse_nre_service(service, ORIGIN_CRS, destination_crs=DESTINATION_CRS)
         
         if leg_data:
             journey = {
@@ -239,10 +249,16 @@ def get_one_change_journeys(client):
     now = datetime.now()
 
     for l1 in l1_services:
-        l1_arr_time = datetime.strptime(l1['arrival'], '%H:%M')
+        try:
+            l1_arr_time = datetime.strptime(l1['arrival'], '%H:%M')
+        except ValueError:
+            # Skip services with missing/invalid arrival time
+            continue 
         
         # We need to account for services arriving just before midnight
-        if l1_arr_time.hour < 3 and now.hour > 20: # Example logic for post-midnight arrivals
+        # Simple logic: If L1 arrives in the early morning (e.g., < 3 AM) and it's currently evening, 
+        # assume it's the next day's service.
+        if l1_arr_time.hour < 3 and now.hour > 20: 
              l1_arr_time += timedelta(days=1)
         
         # Create a base journey structure using the L1 leg data
@@ -265,8 +281,12 @@ def get_one_change_journeys(client):
         }
 
         for l2 in l2_services:
-            l2_dep_time = datetime.strptime(l2['departure'], '%H:%M')
-            
+            try:
+                l2_dep_time = datetime.strptime(l2['departure'], '%H:%M')
+            except ValueError:
+                # Skip services with missing/invalid departure time
+                continue
+
             # Account for L2 departures after midnight on the same "run"
             if l2_dep_time < l1_arr_time and l1_arr_time.hour > 20 and l2_dep_time.hour < 3:
                 l2_dep_time += timedelta(days=1)
@@ -279,8 +299,19 @@ def get_one_change_journeys(client):
             if MIN_TRANSFER_TIME_MINUTES <= transfer_minutes <= MAX_TRANSFER_TIME_MINUTES:
                 
                 # Calculate total duration (for display)
-                l1_dep_time_obj = datetime.strptime(l1['departure'], '%H:%M')
-                total_duration_sec = (datetime.strptime(l2['arrival'], '%H:%M') - l1_dep_time_obj).total_seconds()
+                try:
+                    l1_dep_time_obj = datetime.strptime(l1['departure'], '%H:%M')
+                    l2_arr_time_obj = datetime.strptime(l2['arrival'], '%H:%M')
+                except ValueError:
+                    # Fallback to scheduled times for duration calculation if live times are bad
+                    l1_dep_time_obj = datetime.strptime(l1['scheduled_departure'], '%H:%M')
+                    l2_arr_time_obj = datetime.strptime(l2['arrival'], '%H:%M')
+                    
+                # Handle overnight duration correctly
+                if l2_arr_time_obj < l1_dep_time_obj:
+                    l2_arr_time_obj += timedelta(days=1)
+
+                total_duration_sec = (l2_arr_time_obj - l1_dep_time_obj).total_seconds()
                 
                 # Format the L2 leg as a connection
                 connection = {
