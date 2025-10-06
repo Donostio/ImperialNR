@@ -6,42 +6,58 @@ from requests import Session, HTTPError, ConnectionError, Timeout
 from typing import Optional, Dict, List, Any
 
 # --- Logging Setup ---
-logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
+# ✅ FIX: Changed logging level to DEBUG to provide verbose output
+logging.basicConfig(level=logging.DEBUG, format='%(levelname)s: %(message)s')
 # ---------------------
 
-# --- Configuration ---
-RTT_USERNAME = os.getenv("RTT_USERNAME") # Loaded from GitHub Secret
-RTT_PASSWORD = os.getenv("RTT_PASSWORD") # Loaded from GitHub Secret
+# --- Configuration (CRS codes remain correct) ---
+RTT_USERNAME = os.getenv("RTT_USERNAME")
+RTT_PASSWORD = os.getenv("RTT_PASSWORD")
 OUTPUT_FILE = "live_data.json"
 API_BASE_URL = "https://api.rtt.io/api/v1"
 
-# Use the actual stations from the user's journey
 ORIGIN_STATION_CRS = "SRC" # Streatham Common
 CONNECTION_STATION_CRS = "CLJ" # Clapham Junction
 FINAL_DESTINATION_CRS = "IMW" # Imperial Wharf
-MIN_TRANSFER_MINUTES = 1 # ✅ FIX: Minimum transfer time in minutes, as requested by the user
+MIN_TRANSFER_MINUTES = 1
 # ---------------------
 
 # --- Helper Functions ---
-def parse_rtt_time(time_str: str) -> Optional[datetime]:
-    """Parses RTT HHMM time string into a datetime object, assuming today's date."""
-    if not time_str or len(time_str) != 4:
+def parse_rtt_time(time_str: str, service_date: str) -> Optional[datetime]:
+    """
+    ✅ FIX: Parses RTT HHMM time string combined with the service date (YYYY-MM-DD)
+    into a UTC-aware datetime object, correctly handling times past midnight.
+    """
+    if not time_str or len(time_str) != 4 or not service_date:
         return None
     try:
-        # Combine RTT time with current date (in UTC) for accurate calculation
-        now = datetime.now(timezone.utc)
-        # Create a datetime object for today with the RTT time
-        dt_with_time = datetime.strptime(time_str, "%H%M").replace(
-            year=now.year, month=now.month, day=now.day, tzinfo=timezone.utc
-        )
+        # 1. Combine service date and time string
+        dt_str = f"{service_date} {time_str}" 
+        # RTT times are relative to the service date. The time will be > 23:59 for services
+        # that run past midnight (e.g., 25:00 for 1 am the next day).
         
-        # Handle overnight travel (e.g., if arrival is 00:05 and departure is 23:55)
-        # If departure is earlier than arrival, assume it's the next day
-        if len(str(now.time()).split(':')) > 2 and dt_with_time.time() < now.time() and dt_with_time.hour < 3: # Handle late-night/early-morning services
-             dt_with_time += timedelta(days=1)
+        # 2. Simple parse for standard 24-hour time (HHMM)
+        # This will fail for times like 2500, but is the standard case.
+        try:
+             # Try parsing as standard datetime
+             dt_obj = datetime.strptime(dt_str, "%Y-%m-%d %H%M").replace(tzinfo=timezone.utc)
+        except ValueError:
+             # 3. Handle times > 24 hours (e.g., 25:00, 26:00, etc.)
+             hour = int(time_str[:2])
+             minute = int(time_str[2:])
+             
+             base_date = datetime.strptime(service_date, "%Y-%m-%d")
+             
+             # Calculate total minutes since midnight of service date
+             total_minutes = (hour * 60) + minute
+             
+             # Create the correct datetime object by adding the duration
+             dt_obj = base_date + timedelta(minutes=total_minutes)
+             dt_obj = dt_obj.replace(tzinfo=timezone.utc)
 
-        return dt_with_time
-    except ValueError:
+        return dt_obj
+    except Exception as e:
+        logging.error(f"Failed to parse time '{time_str}' on date '{service_date}': {e}")
         return None
 
 def get_real_departure_time(location_detail: Dict[str, Any]) -> str:
@@ -51,20 +67,18 @@ def get_real_departure_time(location_detail: Dict[str, Any]) -> str:
         return f"{departure_time_rtt[:2]}:{departure_time_rtt[2:]}"
     return "TBC"
 
-# --- RTT Client (Code remains the same as previous step, ensuring API calls) ---
+# --- RTT Client (same as before) ---
 class RttClient:
-    """Client for the Realtime Trains JSON API."""
-    
+    # ... (omitted for brevity, methods are unchanged) ...
     def __init__(self, username, password):
         if not username or not password:
              raise ValueError("RTT_USERNAME and RTT_PASSWORD must be provided.")
         
         self.session = Session()
-        self.session.auth = (username, password) # Basic HTTP Auth
+        self.session.auth = (username, password)
         self.base_url = API_BASE_URL
 
     def _make_request(self, endpoint):
-        """Internal method to handle API requests."""
         url = self.base_url + endpoint
         try:
             response = self.session.get(url, timeout=10)
@@ -81,19 +95,14 @@ class RttClient:
             return None
 
     def get_station_departures(self, station_crs: str) -> Optional[Dict]:
-        """Fetches live departures for a given station."""
         endpoint = f"/json/search/{station_crs}"
-        logging.info(f"Fetching departures for {station_crs} from RTT API...")
+        logging.debug(f"RTT API: Fetching departures for {station_crs}...")
         return self._make_request(endpoint)
 
     def get_service_details(self, service_uid: str, date_of_service: str) -> Optional[Dict]:
-        """
-        Fetches detailed information for a specific service.
-        Date must be in YYYY/MM/DD format.
-        """
         date_str = date_of_service.replace('-', '/')
         endpoint = f"/json/service/{service_uid}/{date_str}"
-        logging.info(f"Fetching details for service {service_uid} on {date_str}...")
+        logging.debug(f"RTT API: Fetching details for service {service_uid} on {date_str}...")
         return self._make_request(endpoint)
 
 def find_calling_point(details: Dict, crs: str) -> Optional[Dict]:
@@ -101,7 +110,6 @@ def find_calling_point(details: Dict, crs: str) -> Optional[Dict]:
     if 'locations' not in details:
         return None
     
-    # Locations is a list of calling points
     for location in details['locations']:
         if location.get('crs') == crs:
             return location
@@ -121,8 +129,7 @@ def process_rtt_data(origin_data: Dict, client: RttClient) -> List[Dict]:
     # 1. Fetch the CLAPHAM JUNCTION (CLJ) departure board once
     clj_departure_board = client.get_station_departures(CONNECTION_STATION_CRS)
     if not clj_departure_board or 'services' not in clj_departure_board:
-        logging.warning(f"Could not retrieve departure board for {CONNECTION_STATION_CRS}. Cannot find connections.")
-        # Return a metadata entry explaining the failure
+        logging.error(f"Could not retrieve departure board for {CONNECTION_STATION_CRS}.")
         return [{"meta_data": {"rtt_status": "Failed to Fetch CLJ Board", "note": "Check RTT API Status and Credentials."}}]
 
     # Filter CLJ board for services heading to the final destination (IMW)
@@ -130,7 +137,8 @@ def process_rtt_data(origin_data: Dict, client: RttClient) -> List[Dict]:
         service for service in clj_departure_board.get('services', [])
         if service.get('destination', [{}])[0].get('crs') == FINAL_DESTINATION_CRS
     ]
-
+    logging.debug(f"Found {len(clj_to_imw_services)} services from CLJ to IMW.")
+    
     # 2. Iterate through First Leg (SRC) services
     for i, src_service in enumerate(origin_data.get('services', [])):
         service_uid = src_service.get('serviceUid')
@@ -143,25 +151,34 @@ def process_rtt_data(origin_data: Dict, client: RttClient) -> List[Dict]:
         service_details = client.get_service_details(service_uid, run_date)
         if not service_details:
             continue
-
+        
         # B. Find CLJ arrival point in service details
         clj_arrival_detail = find_calling_point(service_details, CONNECTION_STATION_CRS)
         
-        # Skip if the service doesn't call at CLJ
+        # ✅ FIX: Skip services that do not call at CLJ, which is required for the connection
         if not clj_arrival_detail:
+            logging.debug(f"SRC service {service_uid} does not call at CLJ. Skipping.")
             continue
 
         # Extract first leg data
         src_detail = src_service['locationDetail']
+        src_dep_time_rtt = src_detail.get('realtimeDeparture', src_detail.get('gbttBookedDeparture'))
         src_dep_time_str = get_real_departure_time(src_detail)
-        
+
+        # Use the fixed time parsing logic
         clj_arr_time_rtt = clj_arrival_detail.get('realtimeArrival', clj_arrival_detail.get('gbttBookedArrival'))
         clj_arr_time_str = f"{clj_arr_time_rtt[:2]}:{clj_arr_time_rtt[2:]}" if clj_arr_time_rtt else "TBC"
         clj_arr_platform = clj_arrival_detail.get('platform', 'TBC')
         
-        first_leg_arrival_dt = parse_rtt_time(clj_arr_time_rtt)
-        if not first_leg_arrival_dt:
-             continue # Skip if CLJ arrival time is missing
+        # Parse fully qualified time objects for calculation
+        first_leg_arrival_dt = parse_rtt_time(clj_arr_time_rtt, run_date)
+        first_leg_departure_dt = parse_rtt_time(src_dep_time_rtt, run_date) # For total duration calculation
+
+        logging.debug(f"SRC Dep: {src_dep_time_str} ({first_leg_departure_dt}) -> CLJ Arr: {clj_arr_time_str} ({first_leg_arrival_dt})")
+
+        if not first_leg_arrival_dt or not first_leg_departure_dt:
+             logging.warning(f"Skipping service {service_uid} due to unparsable time data.")
+             continue
 
         # C. Find the best connection from CLJ to IMW
         best_connection = None
@@ -169,56 +186,52 @@ def process_rtt_data(origin_data: Dict, client: RttClient) -> List[Dict]:
         
         for clj_service in clj_to_imw_services:
             clj_dep_rtt = clj_service['locationDetail'].get('realtimeDeparture', clj_service['locationDetail'].get('gbttBookedDeparture'))
-            clj_dep_dt = parse_rtt_time(clj_dep_rtt)
+            
+            # Parse fully qualified time object for connection departure
+            clj_dep_dt = parse_rtt_time(clj_dep_rtt, best_connection.get('runDate', run_date) if best_connection else run_date)
             
             if not clj_dep_dt:
                 continue
 
             transfer_minutes = calculate_transfer_time(first_leg_arrival_dt, clj_dep_dt)
 
-            # Check for the minimum transfer time requested (>= 1 min)
+            # Check for the minimum transfer time requested (>= 1 min) AND ensure transfer is positive
             if transfer_minutes >= MIN_TRANSFER_MINUTES and transfer_minutes < min_transfer:
                 min_transfer = transfer_minutes
                 best_connection = clj_service
+                
+        logging.debug(f"Best transfer found for service {service_uid}: {min_transfer} minutes.")
         
-        # If a connection is found, process it
+        # D. Assemble the Journey object
         connection_data = []
         total_duration = "N/A"
         arrival_time = "N/A"
 
-        if best_connection:
+        if best_connection and min_transfer != float('inf'):
             clj_dep_detail = best_connection['locationDetail']
             clj_dep_time_str = get_real_departure_time(clj_dep_detail)
             clj_dep_platform = clj_dep_detail.get('platform', 'TBC')
-            
-            # The IMW arrival time would require another service details call on the second leg,
-            # which we'll skip to reduce API load, keeping it TBC.
             
             second_leg = {
                 "origin": "Clapham Junction Rail Station",
                 "destination": best_connection.get('destination', [{}])[0].get('description', 'Imperial Wharf Rail Station'),
                 "departure": clj_dep_time_str,
-                "arrival": "TBC (Service Details Required)", 
-                "departurePlatform_Clapham": clj_dep_platform, # ✅ FIX: CLJ Departure Platform
+                "arrival": "TBC (Service Details API needed)", 
+                "departurePlatform_Clapham": clj_dep_platform,
                 "operator": best_connection.get('operator', 'N/A'),
                 "status": "Delayed" if clj_dep_detail.get('isDelayed', False) else "On Time"
             }
             
             connection_data.append({
-                "transferTime": f"{min_transfer} min", # ✅ FIX: Real Transfer Time
+                "transferTime": f"{min_transfer} min",
                 "second_leg": second_leg
             })
             
-            # Simple total duration: (Second Leg Departure) - (First Leg Departure)
-            first_leg_dep_dt = parse_rtt_time(src_dep_time_str.replace(':', ''))
-            if first_leg_dep_dt:
-                total_duration_minutes = calculate_transfer_time(first_leg_dep_dt, clj_dep_dt)
-                total_duration = f"{total_duration_minutes} min"
-            else:
-                total_duration = "N/A"
+            # Total duration: (Second Leg Departure) - (First Leg Departure)
+            total_duration_minutes = calculate_transfer_time(first_leg_departure_dt, clj_dep_dt)
+            total_duration = f"{total_duration_minutes} min"
 
         else:
-            # If no connection found
             connection_data.append({
                 "transferTime": "No Connection Found (>1 min transfer needed)",
                 "second_leg": {
@@ -232,17 +245,17 @@ def process_rtt_data(origin_data: Dict, client: RttClient) -> List[Dict]:
                 }
             })
 
-        # Structure the final journey object
+        # Final Journey structure
         processed_journeys.append({
             "type": "Live RTT Update (Dual API)",
             "first_leg": {
                 "origin": 'Streatham Common Rail Station',
-                "destination": service_details.get('destination', [{}])[0].get('description', CONNECTION_STATION_CRS),
+                "destination": service_details.get('destination', [{}])[0].get('description', 'Unknown Destination'),
                 "departure": src_dep_time_str,
                 "scheduled_departure": src_dep_time_str,
-                "arrival": clj_arr_time_str, # ✅ FIX: CLJ Arrival Time
+                "arrival": clj_arr_time_str,
                 "departurePlatform_Streatham": src_detail.get('platform', 'TBC'),
-                "arrivalPlatform_Clapham": clj_arr_platform, # ✅ FIX: CLJ Arrival Platform
+                "arrivalPlatform_Clapham": clj_arr_platform,
                 "operator": service_details.get('operator', 'N/A'),
                 "status": "Delayed" if src_detail.get('isDelayed', False) else "On Time",
                 "serviceUid": service_uid,
@@ -256,22 +269,20 @@ def process_rtt_data(origin_data: Dict, client: RttClient) -> List[Dict]:
             "live_updated_at": current_time_str
         })
         
-        # Limiting to the first 3 services to match the common webpage output and limit API calls
-        if len(processed_journeys) >= 3:
+        if len(processed_journeys) >= 5:
             break
 
     # Insert metadata
     meta_data = {
-        "rtt_status": "Accurate Two-Leg Data (Transfer Logic Applied)", 
-        "note": "CLJ arrival platform/time is accurate via Service Details API. Next connection to IMW is accurately selected with a minimum 1 minute transfer time."
+        "rtt_status": "Accurate Two-Leg Data (Fixed Time Logic)", 
+        "note": "Time parsing errors for arrival/departure have been fixed. Connection logic now correctly checks CLJ calling point and finds CLJ-IMW transfer based on a minimum 1 minute window."
     }
     processed_journeys.insert(0, {"meta_data": meta_data})
 
     return processed_journeys
 
 def main():
-    """Main execution function to fetch, process, and save data."""
-    
+    # ... (main function is mostly unchanged, still uses RTT_USERNAME/PASSWORD) ...
     if not RTT_USERNAME or not RTT_PASSWORD:
         logging.error("RTT_USERNAME or RTT_PASSWORD is not set. Exiting.")
         print("\n❌ FAILED TO INITIALIZE: RTT credentials must be provided via environment variables or secrets.")
