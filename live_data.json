@@ -1,90 +1,1337 @@
-[
-    {
-        "type": "One Change",
-        "first_leg": {
-            "origin": "Streatham Common Rail Station",
-            "destination": "Clapham Junction Rail Station",
-            "departure": "17:20",
-            "scheduled_departure": "17:20",
-            "arrival": "17:31",
-            "departurePlatform_Streatham": "TBC",
-            "operator": "N/A",
-            "status": "On Time"
-        },
-        "connections": [
-            {
-                "transferTime": "13 min",
-                "second_leg": {
-                    "origin": "Clapham Junction Rail Station",
-                    "destination": "Imperial Wharf Rail Station",
-                    "departure": "17:44",
-                    "arrival": "17:48",
-                    "departurePlatform_Clapham": "TBC",
-                    "operator": "N/A",
-                    "status": "On Time"
-                }
-            },
-            {
-                "transferTime": "27 min",
-                "second_leg": {
-                    "origin": "Clapham Junction Rail Station",
-                    "destination": "Imperial Wharf Rail Station",
-                    "departure": "17:58",
-                    "arrival": "18:02",
-                    "departurePlatform_Clapham": "TBC",
-                    "operator": "N/A",
-                    "status": "On Time"
-                }
-            },
-            {
-                "transferTime": "35 min",
-                "second_leg": {
-                    "origin": "Clapham Junction Rail Station",
-                    "destination": "Imperial Wharf Rail Station",
-                    "departure": "18:06",
-                    "arrival": "18:10",
-                    "departurePlatform_Clapham": "TBC",
-                    "operator": "N/A",
-                    "status": "On Time"
-                }
-            }
-        ],
-        "totalDuration": "28 min",
-        "arrivalTime": "17:48",
-        "departureTime": "17:20",
-        "segment_id": 1,
-        "live_updated_at": "16:14:23"
+{
+    "location": {
+        "name": "Bournemouth",
+        "crs": "BMH",
+        "tiploc": "BOMO",
+        "country": "gb",
+        "system": "nr"
     },
-    {
-        "type": "One Change",
-        "first_leg": {
-            "origin": "Streatham Common Rail Station",
-            "destination": "Clapham Junction Rail Station",
-            "departure": "17:50",
-            "scheduled_departure": "17:50",
-            "arrival": "18:01",
-            "departurePlatform_Streatham": "TBC",
-            "operator": "N/A",
-            "status": "On Time"
+    "filter": null,
+    "services": [
+        {
+            "locationDetail": {
+                "realtimeActivated": true,
+                "tiploc": "BOMO",
+                "crs": "BMH",
+                "description": "Bournemouth",
+                "gbttBookedArrival": "0910",
+                "gbttBookedDeparture": "0912",
+                "origin": [
+                    {
+                        "tiploc": "WATRLMN",
+                        "description": "London Waterloo",
+                        "workingTime": "070300",
+                        "publicTime": "0703"
+                    }
+                ],
+                "destination": [
+                    {
+                        "tiploc": "POOLE",
+                        "description": "Poole",
+                        "workingTime": "092300",
+                        "publicTime": "0923"
+                    }
+                ],
+                "isCall": true,
+                "isPublicCall": true,
+                "realtimeArrival": "0917",
+                "realtimeArrivalActual": false,
+                "realtimeDeparture": "0919",
+                "realtimeDepartureActual": false,
+                "platform": "4",
+                "platformConfirmed": false,
+                "platformChanged": false,
+                "displayAs": "CALL"
+            },
+            "serviceUid": "L46995",
+            "runDate": "2025-10-06",
+            "trainIdentity": "1B87",
+            "runningIdentity": "1B87",
+            "atocCode": "SW",
+            "atocName": "South Western Railway",
+            "serviceType": "train",
+            "isPassenger": true
         },
-        "connections": [
-            {
-                "transferTime": "5 min",
-                "second_leg": {
-                    "origin": "Clapham Junction Rail Station",
-                    "destination": "Imperial Wharf Rail Station",
-                    "departure": "18:06",
-                    "arrival": "18:10",
-                    "departurePlatform_Clapham": "TBC",
-                    "operator": "N/A",
-                    "status": "On Time"
-                }
-            }
-        ],
-        "totalDuration": "20 min",
-        "arrivalTime": "18:10",
-        "departureTime": "17:50",
-        "segment_id": 2,
-        "live_updated_at": "16:14:23"
-    }
-]
+        {
+            "locationDetail": {
+                "realtimeActivated": true,
+                "tiploc": "BOMO",
+                "crs": "BMH",
+                "description": "Bournemouth",
+                "gbttBookedArrival": "0918",
+                "gbttBookedDeparture": "0922",
+                "origin": [
+                    {
+                        "tiploc": "WEYMTH",
+                        "description": "Weymouth",
+                        "workingTime": "082000",
+                        "publicTime": "0820"
+                    }
+                ],
+                "destination": [
+                    {
+                        "tiploc": "WATRLMN",
+                        "description": "London Waterloo",
+                        "workingTime": "112000",
+                        "publicTime": "1120"
+                    }
+                ],
+                "isCall": true,
+                "isPublicCall": true,
+                "realtimeArrival": "0917",
+                "realtimeArrivalActual": false,
+                "realtimeDeparture": "0922",
+                "realtimeDepartureActual": false,
+                "platform": "2",
+                "platformConfirmed": false,
+                "platformChanged": false,
+                "serviceLocation": "APPR_STAT",
+                "displayAs": "CALL",
+                "associations": [
+                    {
+                        "type": "join",
+                        "associatedUid": "L52697",
+                        "associatedRunDate": "2025-10-06"
+                    }
+                ]
+            },
+            "serviceUid": "L48278",
+            "runDate": "2025-10-06",
+            "trainIdentity": "1W52",
+            "runningIdentity": "1W52",
+            "atocCode": "SW",
+            "atocName": "South Western Railway",
+            "serviceType": "train",
+            "isPassenger": true
+        },
+        {
+            "locationDetail": {
+                "realtimeActivated": true,
+                "tiploc": "BOMO",
+                "crs": "BMH",
+                "description": "Bournemouth",
+                "gbttBookedArrival": "0928",
+                "gbttBookedDeparture": "0932",
+                "origin": [
+                    {
+                        "tiploc": "WATRLMN",
+                        "description": "London Waterloo",
+                        "workingTime": "073500",
+                        "publicTime": "0735"
+                    }
+                ],
+                "destination": [
+                    {
+                        "tiploc": "WEYMTH",
+                        "description": "Weymouth",
+                        "workingTime": "102300",
+                        "publicTime": "1023"
+                    }
+                ],
+                "isCall": true,
+                "isPublicCall": true,
+                "realtimeArrival": "0936",
+                "realtimeArrivalActual": false,
+                "realtimeDeparture": "0940",
+                "realtimeDepartureActual": false,
+                "platform": "3",
+                "platformConfirmed": false,
+                "platformChanged": false,
+                "displayAs": "CALL"
+            },
+            "serviceUid": "L48445",
+            "runDate": "2025-10-06",
+            "trainIdentity": "1W95",
+            "runningIdentity": "1W95",
+            "atocCode": "SW",
+            "atocName": "South Western Railway",
+            "serviceType": "train",
+            "isPassenger": true
+        },
+        {
+            "locationDetail": {
+                "realtimeActivated": true,
+                "tiploc": "BOMO",
+                "crs": "BMH",
+                "description": "Bournemouth",
+                "gbttBookedDeparture": "0945",
+                "origin": [
+                    {
+                        "tiploc": "BOMO",
+                        "description": "Bournemouth",
+                        "workingTime": "094500",
+                        "publicTime": "0945"
+                    }
+                ],
+                "destination": [
+                    {
+                        "tiploc": "MNCRPIC",
+                        "description": "Manchester Piccadilly",
+                        "workingTime": "142900",
+                        "publicTime": "1429"
+                    }
+                ],
+                "isCall": true,
+                "isPublicCall": true,
+                "realtimeDeparture": "0945",
+                "realtimeDepartureActual": false,
+                "platform": "2",
+                "platformConfirmed": false,
+                "platformChanged": false,
+                "displayAs": "ORIGIN"
+            },
+            "serviceUid": "C23392",
+            "runDate": "2025-10-06",
+            "trainIdentity": "1M38",
+            "runningIdentity": "1M38",
+            "atocCode": "XC",
+            "atocName": "CrossCountry",
+            "serviceType": "train",
+            "isPassenger": true
+        },
+        {
+            "locationDetail": {
+                "realtimeActivated": true,
+                "tiploc": "BOMO",
+                "crs": "BMH",
+                "description": "Bournemouth",
+                "gbttBookedArrival": "0953",
+                "gbttBookedDeparture": "0957",
+                "origin": [
+                    {
+                        "tiploc": "WEYMTH",
+                        "description": "Weymouth",
+                        "workingTime": "090000",
+                        "publicTime": "0900"
+                    }
+                ],
+                "destination": [
+                    {
+                        "tiploc": "WATRLMN",
+                        "description": "London Waterloo",
+                        "workingTime": "114700",
+                        "publicTime": "1147"
+                    }
+                ],
+                "isCall": true,
+                "isPublicCall": true,
+                "realtimeArrival": "0952",
+                "realtimeArrivalActual": false,
+                "realtimeDeparture": "0957",
+                "realtimeDepartureActual": false,
+                "platform": "2",
+                "platformConfirmed": false,
+                "platformChanged": false,
+                "displayAs": "CALL"
+            },
+            "serviceUid": "L48147",
+            "runDate": "2025-10-06",
+            "trainIdentity": "1W08",
+            "runningIdentity": "1W08",
+            "atocCode": "SW",
+            "atocName": "South Western Railway",
+            "serviceType": "train",
+            "isPassenger": true
+        },
+        {
+            "locationDetail": {
+                "realtimeActivated": true,
+                "tiploc": "BOMO",
+                "crs": "BMH",
+                "description": "Bournemouth",
+                "gbttBookedDeparture": "1002",
+                "origin": [
+                    {
+                        "tiploc": "BOMO",
+                        "description": "Bournemouth",
+                        "workingTime": "100200",
+                        "publicTime": "1002"
+                    }
+                ],
+                "destination": [
+                    {
+                        "tiploc": "WNCHSTR",
+                        "description": "Winchester",
+                        "workingTime": "112400",
+                        "publicTime": "1124"
+                    }
+                ],
+                "isCall": true,
+                "isPublicCall": true,
+                "realtimeDeparture": "1002",
+                "realtimeDepartureActual": false,
+                "platform": "1",
+                "platformConfirmed": false,
+                "platformChanged": false,
+                "displayAs": "ORIGIN"
+            },
+            "serviceUid": "L48596",
+            "runDate": "2025-10-06",
+            "trainIdentity": "2B36",
+            "runningIdentity": "2B36",
+            "atocCode": "SW",
+            "atocName": "South Western Railway",
+            "serviceType": "train",
+            "isPassenger": true
+        },
+        {
+            "locationDetail": {
+                "realtimeActivated": true,
+                "tiploc": "BOMO",
+                "crs": "BMH",
+                "description": "Bournemouth",
+                "gbttBookedArrival": "1003",
+                "gbttBookedDeparture": "1006",
+                "origin": [
+                    {
+                        "tiploc": "WATRLMN",
+                        "description": "London Waterloo",
+                        "workingTime": "080500",
+                        "publicTime": "0805"
+                    }
+                ],
+                "destination": [
+                    {
+                        "tiploc": "WEYMTH",
+                        "description": "Weymouth",
+                        "workingTime": "110500",
+                        "publicTime": "1105"
+                    }
+                ],
+                "isCall": true,
+                "isPublicCall": true,
+                "realtimeArrival": "1002",
+                "realtimeArrivalActual": false,
+                "realtimeDeparture": "1006",
+                "realtimeDepartureActual": false,
+                "platform": "3",
+                "platformConfirmed": false,
+                "platformChanged": false,
+                "displayAs": "CALL",
+                "associations": [
+                    {
+                        "type": "divide",
+                        "associatedUid": "L52703",
+                        "associatedRunDate": "2025-10-06"
+                    }
+                ]
+            },
+            "serviceUid": "L48296",
+            "runDate": "2025-10-06",
+            "trainIdentity": "1W57",
+            "runningIdentity": "1W57",
+            "atocCode": "SW",
+            "atocName": "South Western Railway",
+            "serviceType": "train",
+            "isPassenger": true
+        },
+        {
+            "locationDetail": {
+                "realtimeActivated": true,
+                "tiploc": "BOMO",
+                "crs": "BMH",
+                "description": "Bournemouth",
+                "gbttBookedDeparture": "1010",
+                "origin": [
+                    {
+                        "tiploc": "WATRLMN",
+                        "description": "London Waterloo",
+                        "workingTime": "080500",
+                        "publicTime": "0805"
+                    }
+                ],
+                "destination": [
+                    {
+                        "tiploc": "POOLE",
+                        "description": "Poole",
+                        "workingTime": "102200",
+                        "publicTime": "1022"
+                    }
+                ],
+                "isCall": true,
+                "isPublicCall": true,
+                "realtimeDeparture": "1010",
+                "realtimeDepartureActual": false,
+                "platform": "3",
+                "platformConfirmed": false,
+                "platformChanged": false,
+                "displayAs": "ORIGIN",
+                "associations": [
+                    {
+                        "type": "divide",
+                        "associatedUid": "L48296",
+                        "associatedRunDate": "2025-10-06"
+                    }
+                ]
+            },
+            "serviceUid": "L52703",
+            "runDate": "2025-10-06",
+            "trainIdentity": "2W57",
+            "runningIdentity": "2W57",
+            "atocCode": "SW",
+            "atocName": "South Western Railway",
+            "serviceType": "train",
+            "isPassenger": true
+        },
+        {
+            "locationDetail": {
+                "realtimeActivated": true,
+                "tiploc": "BOMO",
+                "crs": "BMH",
+                "description": "Bournemouth",
+                "gbttBookedArrival": "1018",
+                "gbttBookedDeparture": "1022",
+                "origin": [
+                    {
+                        "tiploc": "WEYMTH",
+                        "description": "Weymouth",
+                        "workingTime": "092000",
+                        "publicTime": "0920"
+                    }
+                ],
+                "destination": [
+                    {
+                        "tiploc": "WATRLMN",
+                        "description": "London Waterloo",
+                        "workingTime": "122000",
+                        "publicTime": "1220"
+                    }
+                ],
+                "isCall": true,
+                "isPublicCall": true,
+                "realtimeArrival": "1017",
+                "realtimeArrivalActual": false,
+                "realtimeDeparture": "1022",
+                "realtimeDepartureActual": false,
+                "platform": "2",
+                "platformConfirmed": false,
+                "platformChanged": false,
+                "displayAs": "CALL",
+                "associations": [
+                    {
+                        "type": "join",
+                        "associatedUid": "L52699",
+                        "associatedRunDate": "2025-10-06"
+                    }
+                ]
+            },
+            "serviceUid": "L48284",
+            "runDate": "2025-10-06",
+            "trainIdentity": "1W54",
+            "runningIdentity": "1W54",
+            "atocCode": "SW",
+            "atocName": "South Western Railway",
+            "serviceType": "train",
+            "isPassenger": true
+        },
+        {
+            "locationDetail": {
+                "realtimeActivated": true,
+                "tiploc": "BOMO",
+                "crs": "BMH",
+                "description": "Bournemouth",
+                "gbttBookedArrival": "1022",
+                "gbttBookedDeparture": "1025",
+                "origin": [
+                    {
+                        "tiploc": "WATRLMN",
+                        "description": "London Waterloo",
+                        "workingTime": "083500",
+                        "publicTime": "0835"
+                    }
+                ],
+                "destination": [
+                    {
+                        "tiploc": "WEYMTH",
+                        "description": "Weymouth",
+                        "workingTime": "111600",
+                        "publicTime": "1118"
+                    }
+                ],
+                "isCall": true,
+                "isPublicCall": true,
+                "realtimeArrival": "1020",
+                "realtimeArrivalActual": false,
+                "realtimeDeparture": "1025",
+                "realtimeDepartureActual": false,
+                "platform": "3",
+                "platformConfirmed": false,
+                "platformChanged": false,
+                "displayAs": "CALL"
+            },
+            "serviceUid": "L48162",
+            "runDate": "2025-10-06",
+            "trainIdentity": "1W17",
+            "runningIdentity": "1W17",
+            "atocCode": "SW",
+            "atocName": "South Western Railway",
+            "serviceType": "train",
+            "isPassenger": true
+        },
+        {
+            "locationDetail": {
+                "realtimeActivated": true,
+                "tiploc": "BOMO",
+                "crs": "BMH",
+                "description": "Bournemouth",
+                "gbttBookedDeparture": "1045",
+                "origin": [
+                    {
+                        "tiploc": "BOMO",
+                        "description": "Bournemouth",
+                        "workingTime": "104500",
+                        "publicTime": "1045"
+                    }
+                ],
+                "destination": [
+                    {
+                        "tiploc": "MNCRPIC",
+                        "description": "Manchester Piccadilly",
+                        "workingTime": "152900",
+                        "publicTime": "1529"
+                    }
+                ],
+                "isCall": true,
+                "isPublicCall": true,
+                "realtimeDeparture": "1045",
+                "realtimeDepartureActual": false,
+                "platform": "2",
+                "platformConfirmed": false,
+                "platformChanged": false,
+                "displayAs": "ORIGIN"
+            },
+            "serviceUid": "C23397",
+            "runDate": "2025-10-06",
+            "trainIdentity": "1M42",
+            "runningIdentity": "1M42",
+            "atocCode": "XC",
+            "atocName": "CrossCountry",
+            "serviceType": "train",
+            "isPassenger": true
+        },
+        {
+            "locationDetail": {
+                "realtimeActivated": true,
+                "tiploc": "BOMO",
+                "crs": "BMH",
+                "description": "Bournemouth",
+                "gbttBookedArrival": "1055",
+                "gbttBookedDeparture": "1059",
+                "origin": [
+                    {
+                        "tiploc": "WEYMTH",
+                        "description": "Weymouth",
+                        "workingTime": "100000",
+                        "publicTime": "1000"
+                    }
+                ],
+                "destination": [
+                    {
+                        "tiploc": "WATRLMN",
+                        "description": "London Waterloo",
+                        "workingTime": "124900",
+                        "publicTime": "1249"
+                    }
+                ],
+                "isCall": true,
+                "isPublicCall": true,
+                "realtimeArrival": "1054",
+                "realtimeArrivalActual": false,
+                "realtimeDeparture": "1059",
+                "realtimeDepartureActual": false,
+                "platform": "2",
+                "platformConfirmed": false,
+                "platformChanged": false,
+                "displayAs": "CALL"
+            },
+            "serviceUid": "L48152",
+            "runDate": "2025-10-06",
+            "trainIdentity": "1W12",
+            "runningIdentity": "1W12",
+            "atocCode": "SW",
+            "atocName": "South Western Railway",
+            "serviceType": "train",
+            "isPassenger": true
+        },
+        {
+            "locationDetail": {
+                "realtimeActivated": true,
+                "tiploc": "BOMO",
+                "crs": "BMH",
+                "description": "Bournemouth",
+                "gbttBookedDeparture": "1102",
+                "origin": [
+                    {
+                        "tiploc": "BOMO",
+                        "description": "Bournemouth",
+                        "workingTime": "110200",
+                        "publicTime": "1102"
+                    }
+                ],
+                "destination": [
+                    {
+                        "tiploc": "WNCHSTR",
+                        "description": "Winchester",
+                        "workingTime": "122400",
+                        "publicTime": "1224"
+                    }
+                ],
+                "isCall": true,
+                "isPublicCall": true,
+                "realtimeDeparture": "1102",
+                "realtimeDepartureActual": false,
+                "platform": "1",
+                "platformConfirmed": false,
+                "platformChanged": false,
+                "displayAs": "ORIGIN"
+            },
+            "serviceUid": "L48602",
+            "runDate": "2025-10-06",
+            "trainIdentity": "2B40",
+            "runningIdentity": "2B40",
+            "atocCode": "SW",
+            "atocName": "South Western Railway",
+            "serviceType": "train",
+            "isPassenger": true
+        },
+        {
+            "locationDetail": {
+                "realtimeActivated": true,
+                "tiploc": "BOMO",
+                "crs": "BMH",
+                "description": "Bournemouth",
+                "gbttBookedArrival": "1103",
+                "gbttBookedDeparture": "1106",
+                "origin": [
+                    {
+                        "tiploc": "WATRLMN",
+                        "description": "London Waterloo",
+                        "workingTime": "090500",
+                        "publicTime": "0905"
+                    }
+                ],
+                "destination": [
+                    {
+                        "tiploc": "WEYMTH",
+                        "description": "Weymouth",
+                        "workingTime": "120500",
+                        "publicTime": "1207"
+                    }
+                ],
+                "isCall": true,
+                "isPublicCall": true,
+                "realtimeArrival": "1102",
+                "realtimeArrivalActual": false,
+                "realtimeDeparture": "1106",
+                "realtimeDepartureActual": false,
+                "platform": "3",
+                "platformConfirmed": false,
+                "platformChanged": false,
+                "displayAs": "CALL",
+                "associations": [
+                    {
+                        "type": "divide",
+                        "associatedUid": "L52708",
+                        "associatedRunDate": "2025-10-06"
+                    }
+                ]
+            },
+            "serviceUid": "L48304",
+            "runDate": "2025-10-06",
+            "trainIdentity": "1W59",
+            "runningIdentity": "1W59",
+            "atocCode": "SW",
+            "atocName": "South Western Railway",
+            "serviceType": "train",
+            "isPassenger": true
+        },
+        {
+            "locationDetail": {
+                "realtimeActivated": true,
+                "tiploc": "BOMO",
+                "crs": "BMH",
+                "description": "Bournemouth",
+                "gbttBookedDeparture": "1110",
+                "origin": [
+                    {
+                        "tiploc": "WATRLMN",
+                        "description": "London Waterloo",
+                        "workingTime": "090500",
+                        "publicTime": "0905"
+                    }
+                ],
+                "destination": [
+                    {
+                        "tiploc": "POOLE",
+                        "description": "Poole",
+                        "workingTime": "112200",
+                        "publicTime": "1122"
+                    }
+                ],
+                "isCall": true,
+                "isPublicCall": true,
+                "realtimeDeparture": "1110",
+                "realtimeDepartureActual": false,
+                "platform": "3",
+                "platformConfirmed": false,
+                "platformChanged": false,
+                "displayAs": "ORIGIN",
+                "associations": [
+                    {
+                        "type": "divide",
+                        "associatedUid": "L48304",
+                        "associatedRunDate": "2025-10-06"
+                    }
+                ]
+            },
+            "serviceUid": "L52708",
+            "runDate": "2025-10-06",
+            "trainIdentity": "2W59",
+            "runningIdentity": "2W59",
+            "atocCode": "SW",
+            "atocName": "South Western Railway",
+            "serviceType": "train",
+            "isPassenger": true
+        },
+        {
+            "locationDetail": {
+                "realtimeActivated": true,
+                "tiploc": "BOMO",
+                "crs": "BMH",
+                "description": "Bournemouth",
+                "gbttBookedArrival": "1116",
+                "gbttBookedDeparture": "1120",
+                "origin": [
+                    {
+                        "tiploc": "WEYMTH",
+                        "description": "Weymouth",
+                        "workingTime": "101700",
+                        "publicTime": "1017"
+                    }
+                ],
+                "destination": [
+                    {
+                        "tiploc": "WATRLMN",
+                        "description": "London Waterloo",
+                        "workingTime": "132100",
+                        "publicTime": "1321"
+                    }
+                ],
+                "isCall": true,
+                "isPublicCall": true,
+                "realtimeArrival": "1114",
+                "realtimeArrivalActual": false,
+                "realtimeDeparture": "1120",
+                "realtimeDepartureActual": false,
+                "platform": "2",
+                "platformConfirmed": false,
+                "platformChanged": false,
+                "displayAs": "CALL",
+                "associations": [
+                    {
+                        "type": "join",
+                        "associatedUid": "L52701",
+                        "associatedRunDate": "2025-10-06"
+                    }
+                ]
+            },
+            "serviceUid": "L48290",
+            "runDate": "2025-10-06",
+            "trainIdentity": "1W56",
+            "runningIdentity": "1W56",
+            "atocCode": "SW",
+            "atocName": "South Western Railway",
+            "serviceType": "train",
+            "isPassenger": true
+        },
+        {
+            "locationDetail": {
+                "realtimeActivated": true,
+                "tiploc": "BOMO",
+                "crs": "BMH",
+                "description": "Bournemouth",
+                "gbttBookedArrival": "1122",
+                "gbttBookedDeparture": "1126",
+                "origin": [
+                    {
+                        "tiploc": "WATRLMN",
+                        "description": "London Waterloo",
+                        "workingTime": "093500",
+                        "publicTime": "0935"
+                    }
+                ],
+                "destination": [
+                    {
+                        "tiploc": "WEYMTH",
+                        "description": "Weymouth",
+                        "workingTime": "121600",
+                        "publicTime": "1218"
+                    }
+                ],
+                "isCall": true,
+                "isPublicCall": true,
+                "realtimeArrival": "1121",
+                "realtimeArrivalActual": false,
+                "realtimeDeparture": "1126",
+                "realtimeDepartureActual": false,
+                "platform": "3",
+                "platformConfirmed": false,
+                "platformChanged": false,
+                "displayAs": "CALL"
+            },
+            "serviceUid": "L48170",
+            "runDate": "2025-10-06",
+            "trainIdentity": "1W19",
+            "runningIdentity": "1W19",
+            "atocCode": "SW",
+            "atocName": "South Western Railway",
+            "serviceType": "train",
+            "isPassenger": true
+        },
+        {
+            "locationDetail": {
+                "realtimeActivated": true,
+                "tiploc": "BOMO",
+                "crs": "BMH",
+                "description": "Bournemouth",
+                "gbttBookedDeparture": "1145",
+                "origin": [
+                    {
+                        "tiploc": "BOMO",
+                        "description": "Bournemouth",
+                        "workingTime": "114500",
+                        "publicTime": "1145"
+                    }
+                ],
+                "destination": [
+                    {
+                        "tiploc": "MNCRPIC",
+                        "description": "Manchester Piccadilly",
+                        "workingTime": "162900",
+                        "publicTime": "1629"
+                    }
+                ],
+                "isCall": true,
+                "isPublicCall": true,
+                "realtimeDeparture": "1145",
+                "realtimeDepartureActual": false,
+                "platform": "2",
+                "platformConfirmed": false,
+                "platformChanged": false,
+                "displayAs": "ORIGIN"
+            },
+            "serviceUid": "C23404",
+            "runDate": "2025-10-06",
+            "trainIdentity": "1M46",
+            "runningIdentity": "1M46",
+            "atocCode": "XC",
+            "atocName": "CrossCountry",
+            "serviceType": "train",
+            "isPassenger": true
+        },
+        {
+            "locationDetail": {
+                "realtimeActivated": true,
+                "tiploc": "BOMO",
+                "crs": "BMH",
+                "description": "Bournemouth",
+                "gbttBookedArrival": "1153",
+                "gbttBookedDeparture": "1157",
+                "origin": [
+                    {
+                        "tiploc": "WEYMTH",
+                        "description": "Weymouth",
+                        "workingTime": "110000",
+                        "publicTime": "1100"
+                    }
+                ],
+                "destination": [
+                    {
+                        "tiploc": "WATRLMN",
+                        "description": "London Waterloo",
+                        "workingTime": "134900",
+                        "publicTime": "1349"
+                    }
+                ],
+                "isCall": true,
+                "isPublicCall": true,
+                "realtimeArrival": "1152",
+                "realtimeArrivalActual": false,
+                "realtimeDeparture": "1157",
+                "realtimeDepartureActual": false,
+                "platform": "2",
+                "platformConfirmed": false,
+                "platformChanged": false,
+                "displayAs": "CALL"
+            },
+            "serviceUid": "L48158",
+            "runDate": "2025-10-06",
+            "trainIdentity": "1W16",
+            "runningIdentity": "1W16",
+            "atocCode": "SW",
+            "atocName": "South Western Railway",
+            "serviceType": "train",
+            "isPassenger": true
+        },
+        {
+            "locationDetail": {
+                "realtimeActivated": true,
+                "tiploc": "BOMO",
+                "crs": "BMH",
+                "description": "Bournemouth",
+                "gbttBookedDeparture": "1202",
+                "origin": [
+                    {
+                        "tiploc": "BOMO",
+                        "description": "Bournemouth",
+                        "workingTime": "120200",
+                        "publicTime": "1202"
+                    }
+                ],
+                "destination": [
+                    {
+                        "tiploc": "WNCHSTR",
+                        "description": "Winchester",
+                        "workingTime": "132400",
+                        "publicTime": "1324"
+                    }
+                ],
+                "isCall": true,
+                "isPublicCall": true,
+                "realtimeDeparture": "1202",
+                "realtimeDepartureActual": false,
+                "platform": "1",
+                "platformConfirmed": false,
+                "platformChanged": false,
+                "displayAs": "ORIGIN"
+            },
+            "serviceUid": "L48608",
+            "runDate": "2025-10-06",
+            "trainIdentity": "2B44",
+            "runningIdentity": "2B44",
+            "atocCode": "SW",
+            "atocName": "South Western Railway",
+            "serviceType": "train",
+            "isPassenger": true
+        },
+        {
+            "locationDetail": {
+                "realtimeActivated": true,
+                "tiploc": "BOMO",
+                "crs": "BMH",
+                "description": "Bournemouth",
+                "gbttBookedArrival": "1202",
+                "gbttBookedDeparture": "1206",
+                "origin": [
+                    {
+                        "tiploc": "WATRLMN",
+                        "description": "London Waterloo",
+                        "workingTime": "100500",
+                        "publicTime": "1005"
+                    }
+                ],
+                "destination": [
+                    {
+                        "tiploc": "WEYMTH",
+                        "description": "Weymouth",
+                        "workingTime": "130500",
+                        "publicTime": "1307"
+                    }
+                ],
+                "isCall": true,
+                "isPublicCall": true,
+                "realtimeArrival": "1201",
+                "realtimeArrivalActual": false,
+                "realtimeDeparture": "1206",
+                "realtimeDepartureActual": false,
+                "platform": "3",
+                "platformConfirmed": false,
+                "platformChanged": false,
+                "displayAs": "CALL",
+                "associations": [
+                    {
+                        "type": "divide",
+                        "associatedUid": "L52713",
+                        "associatedRunDate": "2025-10-06"
+                    }
+                ]
+            },
+            "serviceUid": "L48316",
+            "runDate": "2025-10-06",
+            "trainIdentity": "1W61",
+            "runningIdentity": "1W61",
+            "atocCode": "SW",
+            "atocName": "South Western Railway",
+            "serviceType": "train",
+            "isPassenger": true
+        },
+        {
+            "locationDetail": {
+                "realtimeActivated": true,
+                "tiploc": "BOMO",
+                "crs": "BMH",
+                "description": "Bournemouth",
+                "gbttBookedDeparture": "1210",
+                "origin": [
+                    {
+                        "tiploc": "WATRLMN",
+                        "description": "London Waterloo",
+                        "workingTime": "100500",
+                        "publicTime": "1005"
+                    }
+                ],
+                "destination": [
+                    {
+                        "tiploc": "POOLE",
+                        "description": "Poole",
+                        "workingTime": "122200",
+                        "publicTime": "1222"
+                    }
+                ],
+                "isCall": true,
+                "isPublicCall": true,
+                "realtimeDeparture": "1210",
+                "realtimeDepartureActual": false,
+                "platform": "3",
+                "platformConfirmed": false,
+                "platformChanged": false,
+                "displayAs": "ORIGIN",
+                "associations": [
+                    {
+                        "type": "divide",
+                        "associatedUid": "L48316",
+                        "associatedRunDate": "2025-10-06"
+                    }
+                ]
+            },
+            "serviceUid": "L52713",
+            "runDate": "2025-10-06",
+            "trainIdentity": "2W61",
+            "runningIdentity": "2W61",
+            "atocCode": "SW",
+            "atocName": "South Western Railway",
+            "serviceType": "train",
+            "isPassenger": true
+        },
+        {
+            "locationDetail": {
+                "realtimeActivated": true,
+                "tiploc": "BOMO",
+                "crs": "BMH",
+                "description": "Bournemouth",
+                "gbttBookedArrival": "1216",
+                "gbttBookedDeparture": "1220",
+                "origin": [
+                    {
+                        "tiploc": "WEYMTH",
+                        "description": "Weymouth",
+                        "workingTime": "111700",
+                        "publicTime": "1117"
+                    }
+                ],
+                "destination": [
+                    {
+                        "tiploc": "WATRLMN",
+                        "description": "London Waterloo",
+                        "workingTime": "142030",
+                        "publicTime": "1421"
+                    }
+                ],
+                "isCall": true,
+                "isPublicCall": true,
+                "realtimeArrival": "1214",
+                "realtimeArrivalActual": false,
+                "realtimeDeparture": "1220",
+                "realtimeDepartureActual": false,
+                "platform": "2",
+                "platformConfirmed": false,
+                "platformChanged": false,
+                "displayAs": "CALL",
+                "associations": [
+                    {
+                        "type": "join",
+                        "associatedUid": "L52706",
+                        "associatedRunDate": "2025-10-06"
+                    }
+                ]
+            },
+            "serviceUid": "L48300",
+            "runDate": "2025-10-06",
+            "trainIdentity": "1W58",
+            "runningIdentity": "1W58",
+            "atocCode": "SW",
+            "atocName": "South Western Railway",
+            "serviceType": "train",
+            "isPassenger": true
+        },
+        {
+            "locationDetail": {
+                "realtimeActivated": true,
+                "tiploc": "BOMO",
+                "crs": "BMH",
+                "description": "Bournemouth",
+                "gbttBookedArrival": "1221",
+                "gbttBookedDeparture": "1225",
+                "origin": [
+                    {
+                        "tiploc": "WATRLMN",
+                        "description": "London Waterloo",
+                        "workingTime": "103500",
+                        "publicTime": "1035"
+                    }
+                ],
+                "destination": [
+                    {
+                        "tiploc": "WEYMTH",
+                        "description": "Weymouth",
+                        "workingTime": "131600",
+                        "publicTime": "1317"
+                    }
+                ],
+                "isCall": true,
+                "isPublicCall": true,
+                "realtimeArrival": "1220",
+                "realtimeArrivalActual": false,
+                "realtimeDeparture": "1225",
+                "realtimeDepartureActual": false,
+                "platform": "3",
+                "platformConfirmed": false,
+                "platformChanged": false,
+                "displayAs": "CALL"
+            },
+            "serviceUid": "L48180",
+            "runDate": "2025-10-06",
+            "trainIdentity": "1W21",
+            "runningIdentity": "1W21",
+            "atocCode": "SW",
+            "atocName": "South Western Railway",
+            "serviceType": "train",
+            "isPassenger": true
+        },
+        {
+            "locationDetail": {
+                "realtimeActivated": true,
+                "tiploc": "BOMO",
+                "crs": "BMH",
+                "description": "Bournemouth",
+                "gbttBookedDeparture": "1245",
+                "origin": [
+                    {
+                        "tiploc": "BOMO",
+                        "description": "Bournemouth",
+                        "workingTime": "124500",
+                        "publicTime": "1245"
+                    }
+                ],
+                "destination": [
+                    {
+                        "tiploc": "MNCRPIC",
+                        "description": "Manchester Piccadilly",
+                        "workingTime": "172900",
+                        "publicTime": "1729"
+                    }
+                ],
+                "isCall": true,
+                "isPublicCall": true,
+                "realtimeDeparture": "1245",
+                "realtimeDepartureActual": false,
+                "platform": "2",
+                "platformConfirmed": false,
+                "platformChanged": false,
+                "displayAs": "ORIGIN"
+            },
+            "serviceUid": "C23410",
+            "runDate": "2025-10-06",
+            "trainIdentity": "1M50",
+            "runningIdentity": "1M50",
+            "atocCode": "XC",
+            "atocName": "CrossCountry",
+            "serviceType": "train",
+            "isPassenger": true
+        },
+        {
+            "locationDetail": {
+                "realtimeActivated": true,
+                "tiploc": "BOMO",
+                "crs": "BMH",
+                "description": "Bournemouth",
+                "gbttBookedArrival": "1253",
+                "gbttBookedDeparture": "1257",
+                "origin": [
+                    {
+                        "tiploc": "WEYMTH",
+                        "description": "Weymouth",
+                        "workingTime": "120000",
+                        "publicTime": "1200"
+                    }
+                ],
+                "destination": [
+                    {
+                        "tiploc": "WATRLMN",
+                        "description": "London Waterloo",
+                        "workingTime": "144900",
+                        "publicTime": "1449"
+                    }
+                ],
+                "isCall": true,
+                "isPublicCall": true,
+                "realtimeArrival": "1252",
+                "realtimeArrivalActual": false,
+                "realtimeDeparture": "1257",
+                "realtimeDepartureActual": false,
+                "platform": "2",
+                "platformConfirmed": false,
+                "platformChanged": false,
+                "displayAs": "CALL"
+            },
+            "serviceUid": "L48166",
+            "runDate": "2025-10-06",
+            "trainIdentity": "1W18",
+            "runningIdentity": "1W18",
+            "atocCode": "SW",
+            "atocName": "South Western Railway",
+            "serviceType": "train",
+            "isPassenger": true
+        },
+        {
+            "locationDetail": {
+                "realtimeActivated": true,
+                "tiploc": "BOMO",
+                "crs": "BMH",
+                "description": "Bournemouth",
+                "gbttBookedDeparture": "1302",
+                "origin": [
+                    {
+                        "tiploc": "BOMO",
+                        "description": "Bournemouth",
+                        "workingTime": "130200",
+                        "publicTime": "1302"
+                    }
+                ],
+                "destination": [
+                    {
+                        "tiploc": "WNCHSTR",
+                        "description": "Winchester",
+                        "workingTime": "142400",
+                        "publicTime": "1424"
+                    }
+                ],
+                "isCall": true,
+                "isPublicCall": true,
+                "realtimeDeparture": "1302",
+                "realtimeDepartureActual": false,
+                "platform": "1",
+                "platformConfirmed": false,
+                "platformChanged": false,
+                "displayAs": "ORIGIN"
+            },
+            "serviceUid": "L48612",
+            "runDate": "2025-10-06",
+            "trainIdentity": "2B48",
+            "runningIdentity": "2B48",
+            "atocCode": "SW",
+            "atocName": "South Western Railway",
+            "serviceType": "train",
+            "isPassenger": true
+        },
+        {
+            "locationDetail": {
+                "realtimeActivated": true,
+                "tiploc": "BOMO",
+                "crs": "BMH",
+                "description": "Bournemouth",
+                "gbttBookedArrival": "1302",
+                "gbttBookedDeparture": "1306",
+                "origin": [
+                    {
+                        "tiploc": "WATRLMN",
+                        "description": "London Waterloo",
+                        "workingTime": "110500",
+                        "publicTime": "1105"
+                    }
+                ],
+                "destination": [
+                    {
+                        "tiploc": "WEYMTH",
+                        "description": "Weymouth",
+                        "workingTime": "140500",
+                        "publicTime": "1407"
+                    }
+                ],
+                "isCall": true,
+                "isPublicCall": true,
+                "realtimeArrival": "1301",
+                "realtimeArrivalActual": false,
+                "realtimeDeparture": "1306",
+                "realtimeDepartureActual": false,
+                "platform": "3",
+                "platformConfirmed": false,
+                "platformChanged": false,
+                "displayAs": "CALL",
+                "associations": [
+                    {
+                        "type": "divide",
+                        "associatedUid": "L52718",
+                        "associatedRunDate": "2025-10-06"
+                    }
+                ]
+            },
+            "serviceUid": "L48324",
+            "runDate": "2025-10-06",
+            "trainIdentity": "1W63",
+            "runningIdentity": "1W63",
+            "atocCode": "SW",
+            "atocName": "South Western Railway",
+            "serviceType": "train",
+            "isPassenger": true
+        },
+        {
+            "locationDetail": {
+                "realtimeActivated": true,
+                "tiploc": "BOMO",
+                "crs": "BMH",
+                "description": "Bournemouth",
+                "gbttBookedDeparture": "1310",
+                "origin": [
+                    {
+                        "tiploc": "WATRLMN",
+                        "description": "London Waterloo",
+                        "workingTime": "110500",
+                        "publicTime": "1105"
+                    }
+                ],
+                "destination": [
+                    {
+                        "tiploc": "POOLE",
+                        "description": "Poole",
+                        "workingTime": "132200",
+                        "publicTime": "1322"
+                    }
+                ],
+                "isCall": true,
+                "isPublicCall": true,
+                "realtimeDeparture": "1310",
+                "realtimeDepartureActual": false,
+                "platform": "3",
+                "platformConfirmed": false,
+                "platformChanged": false,
+                "displayAs": "ORIGIN",
+                "associations": [
+                    {
+                        "type": "divide",
+                        "associatedUid": "L48324",
+                        "associatedRunDate": "2025-10-06"
+                    }
+                ]
+            },
+            "serviceUid": "L52718",
+            "runDate": "2025-10-06",
+            "trainIdentity": "2W63",
+            "runningIdentity": "2W63",
+            "atocCode": "SW",
+            "atocName": "South Western Railway",
+            "serviceType": "train",
+            "isPassenger": true
+        }
+    ]
+}
