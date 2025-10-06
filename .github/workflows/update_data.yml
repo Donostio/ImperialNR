@@ -1,4 +1,4 @@
-name: Update Live TFL Journey Data
+name: Update Live National Rail Data (RealtimeTrains)
 
 on:
   schedule:
@@ -23,21 +23,22 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run TFL data update script
+      - name: Run National Rail data update script
         run: python update_journey_data.py
         env:
-          # Set Time Zone to Europe/London (BST/GMT) to correct the 1-hour offset for datetime.now()
+          # Set Time Zone to Europe/London (BST/GMT)
           TZ: Europe/London 
-          # TFL API credentials (optional but recommended for higher rate limits)
+          # 🚨 FIX: Pass Realtime Trains Token from secrets 
+          RTT_USERNAME: ${{ secrets.RTT_USERNAME }} 
+          RTT_PASSWORD: ${{ secrets.RTT_PASSWORD }} 
+          # TFL API credentials (kept but will not be used by the new script)
           TFL_APP_ID: ${{ secrets.TFL_APP_ID }}
           TFL_APP_KEY: ${{ secrets.TFL_APP_KEY }}
-          # 🚨 FIX: Pass National Rail Token from secrets 
-          LDB_TOKEN: ${{ secrets.LDB_TOKEN }} 
 
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "AUTO: Update TFL journey data"
+          commit_message: "AUTO: Update National Rail journey data (RTT)"
           file_pattern: live_data.json
           commit_user_name: GitHub Actions Bot
           commit_user_email: actions@github.com
