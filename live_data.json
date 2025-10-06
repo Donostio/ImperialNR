@@ -41,6 +41,7 @@
                 "platform": "4",
                 "platformConfirmed": false,
                 "platformChanged": false,
+                "serviceLocation": "APPR_STAT",
                 "displayAs": "CALL"
             },
             "serviceUid": "L46995",
@@ -79,13 +80,13 @@
                 "isCall": true,
                 "isPublicCall": true,
                 "realtimeArrival": "0917",
-                "realtimeArrivalActual": false,
+                "realtimeArrivalActual": true,
                 "realtimeDeparture": "0922",
                 "realtimeDepartureActual": false,
                 "platform": "2",
-                "platformConfirmed": false,
+                "platformConfirmed": true,
                 "platformChanged": false,
-                "serviceLocation": "APPR_STAT",
+                "serviceLocation": "APPR_PLAT",
                 "displayAs": "CALL",
                 "associations": [
                     {
