@@ -10,8 +10,8 @@
         "first_leg": {
             "origin": "Streatham Common Rail Station",
             "destination": "Selhurst",
-            "departure": "00:06",
-            "scheduled_departure": "00:06",
+            "departure": "00:09",
+            "scheduled_departure": "00:09",
             "arrival": "23:54",
             "departurePlatform_Streatham": "1",
             "arrivalPlatform_Clapham": "15",
@@ -36,8 +36,8 @@
         ],
         "totalDuration": "N/A",
         "arrivalTime": "N/A",
-        "departureTime": "00:06",
+        "departureTime": "00:09",
         "segment_id": 1,
-        "live_updated_at": "23:55:11"
+        "live_updated_at": "00:09:01"
     }
 ]
