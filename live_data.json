@@ -9,16 +9,16 @@
         "type": "Live RTT Update (Dual API)",
         "first_leg": {
             "origin": "Streatham Common Rail Station",
-            "destination": "Selhurst",
-            "departure": "00:09",
-            "scheduled_departure": "00:09",
-            "arrival": "23:54",
-            "departurePlatform_Streatham": "1",
-            "arrivalPlatform_Clapham": "15",
+            "destination": "London Victoria",
+            "departure": "05:49",
+            "scheduled_departure": "05:49",
+            "arrival": "06:00",
+            "departurePlatform_Streatham": "2",
+            "arrivalPlatform_Clapham": "14",
             "operator": "N/A",
             "status": "On Time",
-            "serviceUid": "Y31011",
-            "dateOfService": "2025-10-26"
+            "serviceUid": "Y30788",
+            "dateOfService": "2025-10-27"
         },
         "connections": [
             {
@@ -36,8 +36,8 @@
         ],
         "totalDuration": "N/A",
         "arrivalTime": "N/A",
-        "departureTime": "00:09",
+        "departureTime": "05:49",
         "segment_id": 1,
-        "live_updated_at": "00:09:01"
+        "live_updated_at": "01:50:20"
     }
 ]
