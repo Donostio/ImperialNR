@@ -10,41 +10,6 @@
         "first_leg": {
             "origin": "Streatham Common Rail Station",
             "destination": "London Victoria",
-            "departure": "18:53",
-            "scheduled_departure": "18:53",
-            "arrival": "19:04",
-            "departurePlatform_Streatham": "2",
-            "arrivalPlatform_Clapham": "14",
-            "operator": "N/A",
-            "status": "On Time",
-            "serviceUid": "Y30852",
-            "dateOfService": "2025-11-04"
-        },
-        "connections": [
-            {
-                "transferTime": "No Connection Found (>1 min transfer needed)",
-                "second_leg": {
-                    "origin": "Clapham Junction Rail Station",
-                    "destination": "Imperial Wharf Rail Station",
-                    "departure": "N/A",
-                    "arrival": "N/A",
-                    "departurePlatform_Clapham": "N/A",
-                    "operator": "N/A",
-                    "status": "No Connection Found"
-                }
-            }
-        ],
-        "totalDuration": "N/A",
-        "arrivalTime": "N/A",
-        "departureTime": "18:53",
-        "segment_id": 1,
-        "live_updated_at": "18:53:18"
-    },
-    {
-        "type": "Live RTT Update (Dual API)",
-        "first_leg": {
-            "origin": "Streatham Common Rail Station",
-            "destination": "London Victoria",
             "departure": "19:16",
             "scheduled_departure": "19:16",
             "arrival": "19:26",
@@ -72,17 +37,17 @@
         "totalDuration": "N/A",
         "arrivalTime": "N/A",
         "departureTime": "19:16",
-        "segment_id": 2,
-        "live_updated_at": "18:53:18"
+        "segment_id": 1,
+        "live_updated_at": "18:59:05"
     },
     {
         "type": "Live RTT Update (Dual API)",
         "first_leg": {
             "origin": "Streatham Common Rail Station",
             "destination": "London Victoria",
-            "departure": "19:26",
-            "scheduled_departure": "19:26",
-            "arrival": "19:36",
+            "departure": "19:28",
+            "scheduled_departure": "19:28",
+            "arrival": "19:38",
             "departurePlatform_Streatham": "2",
             "arrivalPlatform_Clapham": "14",
             "operator": "N/A",
@@ -106,9 +71,9 @@
         ],
         "totalDuration": "N/A",
         "arrivalTime": "N/A",
-        "departureTime": "19:26",
-        "segment_id": 3,
-        "live_updated_at": "18:53:18"
+        "departureTime": "19:28",
+        "segment_id": 2,
+        "live_updated_at": "18:59:05"
     },
     {
         "type": "Live RTT Update (Dual API)",
@@ -142,8 +107,8 @@
         "totalDuration": "N/A",
         "arrivalTime": "N/A",
         "departureTime": "19:25",
-        "segment_id": 4,
-        "live_updated_at": "18:53:18"
+        "segment_id": 3,
+        "live_updated_at": "18:59:05"
     },
     {
         "type": "Live RTT Update (Dual API)",
@@ -177,7 +142,42 @@
         "totalDuration": "N/A",
         "arrivalTime": "N/A",
         "departureTime": "19:39",
+        "segment_id": 4,
+        "live_updated_at": "18:59:05"
+    },
+    {
+        "type": "Live RTT Update (Dual API)",
+        "first_leg": {
+            "origin": "Streatham Common Rail Station",
+            "destination": "London Victoria",
+            "departure": "19:49",
+            "scheduled_departure": "19:49",
+            "arrival": "20:00",
+            "departurePlatform_Streatham": "2",
+            "arrivalPlatform_Clapham": "14",
+            "operator": "N/A",
+            "status": "On Time",
+            "serviceUid": "Y30886",
+            "dateOfService": "2025-11-04"
+        },
+        "connections": [
+            {
+                "transferTime": "No Connection Found (>1 min transfer needed)",
+                "second_leg": {
+                    "origin": "Clapham Junction Rail Station",
+                    "destination": "Imperial Wharf Rail Station",
+                    "departure": "N/A",
+                    "arrival": "N/A",
+                    "departurePlatform_Clapham": "N/A",
+                    "operator": "N/A",
+                    "status": "No Connection Found"
+                }
+            }
+        ],
+        "totalDuration": "N/A",
+        "arrivalTime": "N/A",
+        "departureTime": "19:49",
         "segment_id": 5,
-        "live_updated_at": "18:53:18"
+        "live_updated_at": "18:59:05"
     }
 ]
