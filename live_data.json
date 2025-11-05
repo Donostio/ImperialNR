@@ -38,16 +38,16 @@
         "arrivalTime": "N/A",
         "departureTime": "20:18",
         "segment_id": 1,
-        "live_updated_at": "20:03:03"
+        "live_updated_at": "20:14:49"
     },
     {
         "type": "Live RTT Update (Dual API)",
         "first_leg": {
             "origin": "Streatham Common Rail Station",
             "destination": "London Victoria",
-            "departure": "20:22",
-            "scheduled_departure": "20:22",
-            "arrival": "20:33",
+            "departure": "20:24",
+            "scheduled_departure": "20:24",
+            "arrival": "20:34",
             "departurePlatform_Streatham": "2",
             "arrivalPlatform_Clapham": "14",
             "operator": "N/A",
@@ -71,9 +71,9 @@
         ],
         "totalDuration": "N/A",
         "arrivalTime": "N/A",
-        "departureTime": "20:22",
+        "departureTime": "20:24",
         "segment_id": 2,
-        "live_updated_at": "20:03:03"
+        "live_updated_at": "20:14:49"
     },
     {
         "type": "Live RTT Update (Dual API)",
@@ -82,7 +82,7 @@
             "destination": "Watford Junction",
             "departure": "20:25",
             "scheduled_departure": "20:25",
-            "arrival": "20:33",
+            "arrival": "20:34",
             "departurePlatform_Streatham": "2",
             "arrivalPlatform_Clapham": "16",
             "operator": "N/A",
@@ -108,16 +108,16 @@
         "arrivalTime": "N/A",
         "departureTime": "20:25",
         "segment_id": 3,
-        "live_updated_at": "20:03:03"
+        "live_updated_at": "20:14:49"
     },
     {
         "type": "Live RTT Update (Dual API)",
         "first_leg": {
             "origin": "Streatham Common Rail Station",
             "destination": "London Victoria",
-            "departure": "20:49",
-            "scheduled_departure": "20:49",
-            "arrival": "21:00",
+            "departure": "20:50",
+            "scheduled_departure": "20:50",
+            "arrival": "21:01",
             "departurePlatform_Streatham": "2",
             "arrivalPlatform_Clapham": "14",
             "operator": "N/A",
@@ -141,9 +141,9 @@
         ],
         "totalDuration": "N/A",
         "arrivalTime": "N/A",
-        "departureTime": "20:49",
+        "departureTime": "20:50",
         "segment_id": 4,
-        "live_updated_at": "20:03:03"
+        "live_updated_at": "20:14:49"
     },
     {
         "type": "Live RTT Update (Dual API)",
@@ -178,6 +178,6 @@
         "arrivalTime": "N/A",
         "departureTime": "21:19",
         "segment_id": 5,
-        "live_updated_at": "20:03:03"
+        "live_updated_at": "20:14:49"
     }
 ]
