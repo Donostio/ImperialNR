@@ -13,7 +13,7 @@
             "departure": "23:42",
             "scheduled_departure": "23:42",
             "arrival": "23:52",
-            "departurePlatform_Streatham": "4",
+            "departurePlatform_Streatham": "2",
             "arrivalPlatform_Clapham": "12",
             "operator": "N/A",
             "status": "On Time",
@@ -38,6 +38,6 @@
         "arrivalTime": "N/A",
         "departureTime": "23:42",
         "segment_id": 1,
-        "live_updated_at": "23:33:50"
+        "live_updated_at": "23:41:49"
     }
 ]
