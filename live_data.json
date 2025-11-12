@@ -9,15 +9,15 @@
         "type": "Live RTT Update (Dual API)",
         "first_leg": {
             "origin": "Streatham Common Rail Station",
-            "destination": "London Victoria",
-            "departure": "23:42",
-            "scheduled_departure": "23:42",
-            "arrival": "23:52",
-            "departurePlatform_Streatham": "2",
-            "arrivalPlatform_Clapham": "12",
+            "destination": "Sutton (Surrey)",
+            "departure": "00:00",
+            "scheduled_departure": "00:00",
+            "arrival": "23:49",
+            "departurePlatform_Streatham": "3",
+            "arrivalPlatform_Clapham": "13",
             "operator": "N/A",
             "status": "On Time",
-            "serviceUid": "Y30997",
+            "serviceUid": "Y31001",
             "dateOfService": "2025-11-12"
         },
         "connections": [
@@ -36,8 +36,8 @@
         ],
         "totalDuration": "N/A",
         "arrivalTime": "N/A",
-        "departureTime": "23:42",
+        "departureTime": "00:00",
         "segment_id": 1,
-        "live_updated_at": "23:41:49"
+        "live_updated_at": "23:48:13"
     }
 ]
