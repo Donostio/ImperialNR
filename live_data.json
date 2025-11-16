@@ -38,7 +38,7 @@
         "arrivalTime": "N/A",
         "departureTime": "07:20",
         "segment_id": 1,
-        "live_updated_at": "06:58:30"
+        "live_updated_at": "07:08:02"
     },
     {
         "type": "Live RTT Update (Dual API)",
@@ -73,7 +73,7 @@
         "arrivalTime": "N/A",
         "departureTime": "07:37",
         "segment_id": 2,
-        "live_updated_at": "06:58:30"
+        "live_updated_at": "07:08:02"
     },
     {
         "type": "Live RTT Update (Dual API)",
@@ -108,7 +108,7 @@
         "arrivalTime": "N/A",
         "departureTime": "08:20",
         "segment_id": 3,
-        "live_updated_at": "06:58:30"
+        "live_updated_at": "07:08:02"
     },
     {
         "type": "Live RTT Update (Dual API)",
@@ -143,7 +143,7 @@
         "arrivalTime": "N/A",
         "departureTime": "08:50",
         "segment_id": 4,
-        "live_updated_at": "06:58:30"
+        "live_updated_at": "07:08:02"
     },
     {
         "type": "Live RTT Update (Dual API)",
@@ -178,6 +178,6 @@
         "arrivalTime": "N/A",
         "departureTime": "09:20",
         "segment_id": 5,
-        "live_updated_at": "06:58:30"
+        "live_updated_at": "07:08:02"
     }
 ]
