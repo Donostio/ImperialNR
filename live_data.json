@@ -10,9 +10,9 @@
         "first_leg": {
             "origin": "Streatham Common Rail Station",
             "destination": "London Victoria",
-            "departure": "18:19",
-            "scheduled_departure": "18:19",
-            "arrival": "18:30",
+            "departure": "18:21",
+            "scheduled_departure": "18:21",
+            "arrival": "18:31",
             "departurePlatform_Streatham": "2",
             "arrivalPlatform_Clapham": "14",
             "operator": "N/A",
@@ -36,9 +36,9 @@
         ],
         "totalDuration": "N/A",
         "arrivalTime": "N/A",
-        "departureTime": "18:19",
+        "departureTime": "18:21",
         "segment_id": 1,
-        "live_updated_at": "17:55:06"
+        "live_updated_at": "18:14:54"
     },
     {
         "type": "Live RTT Update (Dual API)",
@@ -47,7 +47,7 @@
             "destination": "Watford Junction",
             "departure": "18:25",
             "scheduled_departure": "18:25",
-            "arrival": "18:33",
+            "arrival": "18:34",
             "departurePlatform_Streatham": "2",
             "arrivalPlatform_Clapham": "16",
             "operator": "N/A",
@@ -73,7 +73,7 @@
         "arrivalTime": "N/A",
         "departureTime": "18:25",
         "segment_id": 2,
-        "live_updated_at": "17:55:06"
+        "live_updated_at": "18:14:54"
     },
     {
         "type": "Live RTT Update (Dual API)",
@@ -108,7 +108,7 @@
         "arrivalTime": "N/A",
         "departureTime": "18:49",
         "segment_id": 3,
-        "live_updated_at": "17:55:06"
+        "live_updated_at": "18:14:54"
     },
     {
         "type": "Live RTT Update (Dual API)",
@@ -143,7 +143,7 @@
         "arrivalTime": "N/A",
         "departureTime": "19:19",
         "segment_id": 4,
-        "live_updated_at": "17:55:06"
+        "live_updated_at": "18:14:54"
     },
     {
         "type": "Live RTT Update (Dual API)",
@@ -178,6 +178,6 @@
         "arrivalTime": "N/A",
         "departureTime": "19:25",
         "segment_id": 5,
-        "live_updated_at": "17:55:06"
+        "live_updated_at": "18:14:54"
     }
 ]
