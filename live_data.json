@@ -10,8 +10,8 @@
         "first_leg": {
             "origin": "Streatham Common Rail Station",
             "destination": "Sutton (Surrey)",
-            "departure": "00:04",
-            "scheduled_departure": "00:04",
+            "departure": "00:03",
+            "scheduled_departure": "00:03",
             "arrival": "23:53",
             "departurePlatform_Streatham": "1",
             "arrivalPlatform_Clapham": "15",
@@ -36,8 +36,8 @@
         ],
         "totalDuration": "N/A",
         "arrivalTime": "N/A",
-        "departureTime": "00:04",
+        "departureTime": "00:03",
         "segment_id": 1,
-        "live_updated_at": "23:47:35"
+        "live_updated_at": "23:55:13"
     }
 ]
