@@ -38,16 +38,16 @@
         "arrivalTime": "N/A",
         "departureTime": "23:20",
         "segment_id": 1,
-        "live_updated_at": "23:03:58"
+        "live_updated_at": "23:14:04"
     },
     {
         "type": "Live RTT Update (Dual API)",
         "first_leg": {
             "origin": "Streatham Common Rail Station",
             "destination": "London Victoria",
-            "departure": "23:43",
-            "scheduled_departure": "23:43",
-            "arrival": "23:52",
+            "departure": "23:44",
+            "scheduled_departure": "23:44",
+            "arrival": "23:53",
             "departurePlatform_Streatham": "2",
             "arrivalPlatform_Clapham": "14",
             "operator": "N/A",
@@ -71,8 +71,8 @@
         ],
         "totalDuration": "N/A",
         "arrivalTime": "N/A",
-        "departureTime": "23:43",
+        "departureTime": "23:44",
         "segment_id": 2,
-        "live_updated_at": "23:03:58"
+        "live_updated_at": "23:14:04"
     }
 ]
