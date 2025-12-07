@@ -38,7 +38,7 @@
         "arrivalTime": "N/A",
         "departureTime": "22:20",
         "segment_id": 1,
-        "live_updated_at": "22:02:35"
+        "live_updated_at": "22:14:02"
     },
     {
         "type": "Live RTT Update (Dual API)",
@@ -73,7 +73,7 @@
         "arrivalTime": "N/A",
         "departureTime": "22:50",
         "segment_id": 2,
-        "live_updated_at": "22:02:35"
+        "live_updated_at": "22:14:02"
     },
     {
         "type": "Live RTT Update (Dual API)",
@@ -108,7 +108,7 @@
         "arrivalTime": "N/A",
         "departureTime": "23:20",
         "segment_id": 3,
-        "live_updated_at": "22:02:35"
+        "live_updated_at": "22:14:02"
     },
     {
         "type": "Live RTT Update (Dual API)",
@@ -143,6 +143,6 @@
         "arrivalTime": "N/A",
         "departureTime": "00:06",
         "segment_id": 4,
-        "live_updated_at": "22:02:35"
+        "live_updated_at": "22:14:02"
     }
 ]
