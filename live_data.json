@@ -4,5 +4,40 @@
             "rtt_status": "Accurate Two-Leg Data (Final Fixes Applied)",
             "note": "Time parsing and service validity checks fixed. CLJ-IMW search now includes major London Overground termini (DLJ, HNI, SFA)."
         }
+    },
+    {
+        "type": "Live RTT Update (Dual API)",
+        "first_leg": {
+            "origin": "Streatham Common Rail Station",
+            "destination": "London Victoria",
+            "departure": "05:55",
+            "scheduled_departure": "05:55",
+            "arrival": "06:04",
+            "departurePlatform_Streatham": "2",
+            "arrivalPlatform_Clapham": "14",
+            "operator": "N/A",
+            "status": "On Time",
+            "serviceUid": "W60017",
+            "dateOfService": "2025-12-21"
+        },
+        "connections": [
+            {
+                "transferTime": "No Connection Found (>1 min transfer needed)",
+                "second_leg": {
+                    "origin": "Clapham Junction Rail Station",
+                    "destination": "Imperial Wharf Rail Station",
+                    "departure": "N/A",
+                    "arrival": "N/A",
+                    "departurePlatform_Clapham": "N/A",
+                    "operator": "N/A",
+                    "status": "No Connection Found"
+                }
+            }
+        ],
+        "totalDuration": "N/A",
+        "arrivalTime": "N/A",
+        "departureTime": "05:55",
+        "segment_id": 1,
+        "live_updated_at": "01:59:29"
     }
 ]
