@@ -12,7 +12,7 @@
             "destination": "Selhurst",
             "departure": "00:06",
             "scheduled_departure": "00:06",
-            "arrival": "23:53",
+            "arrival": "23:52",
             "departurePlatform_Streatham": "1",
             "arrivalPlatform_Clapham": "15",
             "operator": "N/A",
@@ -38,6 +38,6 @@
         "arrivalTime": "N/A",
         "departureTime": "00:06",
         "segment_id": 1,
-        "live_updated_at": "23:48:27"
+        "live_updated_at": "23:55:37"
     }
 ]
