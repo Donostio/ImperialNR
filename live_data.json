@@ -10,44 +10,9 @@
         "first_leg": {
             "origin": "Streatham Common Rail Station",
             "destination": "London Victoria",
-            "departure": "21:21",
-            "scheduled_departure": "21:21",
-            "arrival": "21:31",
-            "departurePlatform_Streatham": "2",
-            "arrivalPlatform_Clapham": "14",
-            "operator": "N/A",
-            "status": "On Time",
-            "serviceUid": "P26122",
-            "dateOfService": "2025-12-21"
-        },
-        "connections": [
-            {
-                "transferTime": "No Connection Found (>1 min transfer needed)",
-                "second_leg": {
-                    "origin": "Clapham Junction Rail Station",
-                    "destination": "Imperial Wharf Rail Station",
-                    "departure": "N/A",
-                    "arrival": "N/A",
-                    "departurePlatform_Clapham": "N/A",
-                    "operator": "N/A",
-                    "status": "No Connection Found"
-                }
-            }
-        ],
-        "totalDuration": "N/A",
-        "arrivalTime": "N/A",
-        "departureTime": "21:21",
-        "segment_id": 1,
-        "live_updated_at": "21:14:12"
-    },
-    {
-        "type": "Live RTT Update (Dual API)",
-        "first_leg": {
-            "origin": "Streatham Common Rail Station",
-            "destination": "London Victoria",
-            "departure": "21:46",
-            "scheduled_departure": "21:46",
-            "arrival": "21:56",
+            "departure": "21:47",
+            "scheduled_departure": "21:47",
+            "arrival": "21:57",
             "departurePlatform_Streatham": "2",
             "arrivalPlatform_Clapham": "14",
             "operator": "N/A",
@@ -71,9 +36,9 @@
         ],
         "totalDuration": "N/A",
         "arrivalTime": "N/A",
-        "departureTime": "21:46",
-        "segment_id": 2,
-        "live_updated_at": "21:14:12"
+        "departureTime": "21:47",
+        "segment_id": 1,
+        "live_updated_at": "21:25:31"
     },
     {
         "type": "Live RTT Update (Dual API)",
@@ -107,8 +72,8 @@
         "totalDuration": "N/A",
         "arrivalTime": "N/A",
         "departureTime": "22:21",
-        "segment_id": 3,
-        "live_updated_at": "21:14:12"
+        "segment_id": 2,
+        "live_updated_at": "21:25:31"
     },
     {
         "type": "Live RTT Update (Dual API)",
@@ -142,8 +107,8 @@
         "totalDuration": "N/A",
         "arrivalTime": "N/A",
         "departureTime": "22:44",
-        "segment_id": 4,
-        "live_updated_at": "21:14:12"
+        "segment_id": 3,
+        "live_updated_at": "21:25:31"
     },
     {
         "type": "Live RTT Update (Dual API)",
@@ -177,7 +142,42 @@
         "totalDuration": "N/A",
         "arrivalTime": "N/A",
         "departureTime": "23:22",
+        "segment_id": 4,
+        "live_updated_at": "21:25:31"
+    },
+    {
+        "type": "Live RTT Update (Dual API)",
+        "first_leg": {
+            "origin": "Streatham Common Rail Station",
+            "destination": "Selhurst",
+            "departure": "00:06",
+            "scheduled_departure": "00:06",
+            "arrival": "23:53",
+            "departurePlatform_Streatham": "1",
+            "arrivalPlatform_Clapham": "15",
+            "operator": "N/A",
+            "status": "On Time",
+            "serviceUid": "P26196",
+            "dateOfService": "2025-12-21"
+        },
+        "connections": [
+            {
+                "transferTime": "No Connection Found (>1 min transfer needed)",
+                "second_leg": {
+                    "origin": "Clapham Junction Rail Station",
+                    "destination": "Imperial Wharf Rail Station",
+                    "departure": "N/A",
+                    "arrival": "N/A",
+                    "departurePlatform_Clapham": "N/A",
+                    "operator": "N/A",
+                    "status": "No Connection Found"
+                }
+            }
+        ],
+        "totalDuration": "N/A",
+        "arrivalTime": "N/A",
+        "departureTime": "00:06",
         "segment_id": 5,
-        "live_updated_at": "21:14:12"
+        "live_updated_at": "21:25:31"
     }
 ]
