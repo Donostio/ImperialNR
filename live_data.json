@@ -10,9 +10,9 @@
         "first_leg": {
             "origin": "Streatham Common Rail Station",
             "destination": "London Victoria",
-            "departure": "15:44",
-            "scheduled_departure": "15:44",
-            "arrival": "15:55",
+            "departure": "15:48",
+            "scheduled_departure": "15:48",
+            "arrival": "15:58",
             "departurePlatform_Streatham": "2",
             "arrivalPlatform_Clapham": "14",
             "operator": "N/A",
@@ -36,18 +36,18 @@
         ],
         "totalDuration": "N/A",
         "arrivalTime": "N/A",
-        "departureTime": "15:44",
+        "departureTime": "15:48",
         "segment_id": 1,
-        "live_updated_at": "15:34:38"
+        "live_updated_at": "15:42:39"
     },
     {
         "type": "Live RTT Update (Dual API)",
         "first_leg": {
             "origin": "Streatham Common Rail Station",
             "destination": "London Victoria",
-            "departure": "16:21",
-            "scheduled_departure": "16:21",
-            "arrival": "16:31",
+            "departure": "16:22",
+            "scheduled_departure": "16:22",
+            "arrival": "16:32",
             "departurePlatform_Streatham": "2",
             "arrivalPlatform_Clapham": "14",
             "operator": "N/A",
@@ -71,9 +71,9 @@
         ],
         "totalDuration": "N/A",
         "arrivalTime": "N/A",
-        "departureTime": "16:21",
+        "departureTime": "16:22",
         "segment_id": 2,
-        "live_updated_at": "15:34:38"
+        "live_updated_at": "15:42:39"
     },
     {
         "type": "Live RTT Update (Dual API)",
@@ -108,7 +108,7 @@
         "arrivalTime": "N/A",
         "departureTime": "16:44",
         "segment_id": 3,
-        "live_updated_at": "15:34:38"
+        "live_updated_at": "15:42:39"
     },
     {
         "type": "Live RTT Update (Dual API)",
@@ -143,7 +143,7 @@
         "arrivalTime": "N/A",
         "departureTime": "17:21",
         "segment_id": 4,
-        "live_updated_at": "15:34:38"
+        "live_updated_at": "15:42:39"
     },
     {
         "type": "Live RTT Update (Dual API)",
@@ -178,6 +178,6 @@
         "arrivalTime": "N/A",
         "departureTime": "17:44",
         "segment_id": 5,
-        "live_updated_at": "15:34:38"
+        "live_updated_at": "15:42:39"
     }
 ]
