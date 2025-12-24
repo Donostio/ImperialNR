@@ -9,15 +9,15 @@
         "type": "Live RTT Update (Dual API)",
         "first_leg": {
             "origin": "Streatham Common Rail Station",
-            "destination": "London Victoria",
-            "departure": "20:20",
-            "scheduled_departure": "20:20",
-            "arrival": "20:31",
-            "departurePlatform_Streatham": "2",
-            "arrivalPlatform_Clapham": "14",
+            "destination": "North Pole International",
+            "departure": "00:02",
+            "scheduled_departure": "00:02",
+            "arrival": "23:58",
+            "departurePlatform_Streatham": "1",
+            "arrivalPlatform_Clapham": "1",
             "operator": "N/A",
             "status": "On Time",
-            "serviceUid": "X77483",
+            "serviceUid": "S73184",
             "dateOfService": "2025-12-24"
         },
         "connections": [
@@ -36,8 +36,8 @@
         ],
         "totalDuration": "N/A",
         "arrivalTime": "N/A",
-        "departureTime": "20:20",
+        "departureTime": "00:02",
         "segment_id": 1,
-        "live_updated_at": "20:14:28"
+        "live_updated_at": "23:26:28"
     }
 ]
