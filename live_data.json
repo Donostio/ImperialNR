@@ -38,7 +38,7 @@
         "arrivalTime": "N/A",
         "departureTime": "19:49",
         "segment_id": 1,
-        "live_updated_at": "19:26:15"
+        "live_updated_at": "19:33:00"
     },
     {
         "type": "Live RTT Update (Dual API)",
@@ -73,6 +73,6 @@
         "arrivalTime": "N/A",
         "departureTime": "20:20",
         "segment_id": 2,
-        "live_updated_at": "19:26:15"
+        "live_updated_at": "19:33:00"
     }
 ]
