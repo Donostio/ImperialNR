@@ -12,7 +12,7 @@
             "destination": "London Victoria",
             "departure": "23:21",
             "scheduled_departure": "23:21",
-            "arrival": "23:31",
+            "arrival": "23:30",
             "departurePlatform_Streatham": "2",
             "arrivalPlatform_Clapham": "14",
             "operator": "N/A",
@@ -38,6 +38,6 @@
         "arrivalTime": "N/A",
         "departureTime": "23:21",
         "segment_id": 1,
-        "live_updated_at": "23:00:03"
+        "live_updated_at": "23:14:27"
     }
 ]
