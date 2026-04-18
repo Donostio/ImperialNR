@@ -10,76 +10,6 @@
         "first_leg": {
             "origin": "Streatham Common Rail Station",
             "destination": "Clapham Junction",
-            "departure": "08:17",
-            "scheduled_departure": "08:17",
-            "arrival": "08:54",
-            "departurePlatform_Streatham": "TBC",
-            "arrivalPlatform_Clapham": "TBC",
-            "operator": "N/A",
-            "status": "On Time",
-            "serviceUid": "X06127",
-            "dateOfService": "2026-04-18"
-        },
-        "connections": [
-            {
-                "transferTime": "No Connection Found (>1 min transfer needed)",
-                "second_leg": {
-                    "origin": "Clapham Junction Rail Station",
-                    "destination": "Imperial Wharf Rail Station",
-                    "departure": "N/A",
-                    "arrival": "N/A",
-                    "departurePlatform_Clapham": "N/A",
-                    "operator": "N/A",
-                    "status": "No Connection Found"
-                }
-            }
-        ],
-        "totalDuration": "N/A",
-        "arrivalTime": "N/A",
-        "departureTime": "08:17",
-        "segment_id": 1,
-        "live_updated_at": "08:06:58"
-    },
-    {
-        "type": "Live RTT Update (Dual API)",
-        "first_leg": {
-            "origin": "Streatham Common Rail Station",
-            "destination": "Clapham Junction",
-            "departure": "08:32",
-            "scheduled_departure": "08:32",
-            "arrival": "09:09",
-            "departurePlatform_Streatham": "TBC",
-            "arrivalPlatform_Clapham": "TBC",
-            "operator": "N/A",
-            "status": "On Time",
-            "serviceUid": "X06126",
-            "dateOfService": "2026-04-18"
-        },
-        "connections": [
-            {
-                "transferTime": "No Connection Found (>1 min transfer needed)",
-                "second_leg": {
-                    "origin": "Clapham Junction Rail Station",
-                    "destination": "Imperial Wharf Rail Station",
-                    "departure": "N/A",
-                    "arrival": "N/A",
-                    "departurePlatform_Clapham": "N/A",
-                    "operator": "N/A",
-                    "status": "No Connection Found"
-                }
-            }
-        ],
-        "totalDuration": "N/A",
-        "arrivalTime": "N/A",
-        "departureTime": "08:32",
-        "segment_id": 2,
-        "live_updated_at": "08:06:58"
-    },
-    {
-        "type": "Live RTT Update (Dual API)",
-        "first_leg": {
-            "origin": "Streatham Common Rail Station",
-            "destination": "Clapham Junction",
             "departure": "08:47",
             "scheduled_departure": "08:47",
             "arrival": "09:24",
@@ -107,8 +37,8 @@
         "totalDuration": "N/A",
         "arrivalTime": "N/A",
         "departureTime": "08:47",
-        "segment_id": 3,
-        "live_updated_at": "08:06:58"
+        "segment_id": 1,
+        "live_updated_at": "08:36:56"
     },
     {
         "type": "Live RTT Update (Dual API)",
@@ -142,8 +72,8 @@
         "totalDuration": "N/A",
         "arrivalTime": "N/A",
         "departureTime": "09:02",
-        "segment_id": 4,
-        "live_updated_at": "08:06:58"
+        "segment_id": 2,
+        "live_updated_at": "08:36:56"
     },
     {
         "type": "Live RTT Update (Dual API)",
@@ -177,7 +107,77 @@
         "totalDuration": "N/A",
         "arrivalTime": "N/A",
         "departureTime": "09:17",
+        "segment_id": 3,
+        "live_updated_at": "08:36:56"
+    },
+    {
+        "type": "Live RTT Update (Dual API)",
+        "first_leg": {
+            "origin": "Streatham Common Rail Station",
+            "destination": "Clapham Junction",
+            "departure": "09:32",
+            "scheduled_departure": "09:32",
+            "arrival": "10:09",
+            "departurePlatform_Streatham": "TBC",
+            "arrivalPlatform_Clapham": "TBC",
+            "operator": "N/A",
+            "status": "On Time",
+            "serviceUid": "X06122",
+            "dateOfService": "2026-04-18"
+        },
+        "connections": [
+            {
+                "transferTime": "No Connection Found (>1 min transfer needed)",
+                "second_leg": {
+                    "origin": "Clapham Junction Rail Station",
+                    "destination": "Imperial Wharf Rail Station",
+                    "departure": "N/A",
+                    "arrival": "N/A",
+                    "departurePlatform_Clapham": "N/A",
+                    "operator": "N/A",
+                    "status": "No Connection Found"
+                }
+            }
+        ],
+        "totalDuration": "N/A",
+        "arrivalTime": "N/A",
+        "departureTime": "09:32",
+        "segment_id": 4,
+        "live_updated_at": "08:36:56"
+    },
+    {
+        "type": "Live RTT Update (Dual API)",
+        "first_leg": {
+            "origin": "Streatham Common Rail Station",
+            "destination": "Clapham Junction",
+            "departure": "09:47",
+            "scheduled_departure": "09:47",
+            "arrival": "10:24",
+            "departurePlatform_Streatham": "TBC",
+            "arrivalPlatform_Clapham": "TBC",
+            "operator": "N/A",
+            "status": "On Time",
+            "serviceUid": "X06121",
+            "dateOfService": "2026-04-18"
+        },
+        "connections": [
+            {
+                "transferTime": "No Connection Found (>1 min transfer needed)",
+                "second_leg": {
+                    "origin": "Clapham Junction Rail Station",
+                    "destination": "Imperial Wharf Rail Station",
+                    "departure": "N/A",
+                    "arrival": "N/A",
+                    "departurePlatform_Clapham": "N/A",
+                    "operator": "N/A",
+                    "status": "No Connection Found"
+                }
+            }
+        ],
+        "totalDuration": "N/A",
+        "arrivalTime": "N/A",
+        "departureTime": "09:47",
         "segment_id": 5,
-        "live_updated_at": "08:06:58"
+        "live_updated_at": "08:36:56"
     }
 ]
