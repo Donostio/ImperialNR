@@ -9,15 +9,15 @@
         "type": "Live RTT Update (Dual API)",
         "first_leg": {
             "origin": "Streatham Common Rail Station",
-            "destination": "London Victoria",
-            "departure": "23:42",
-            "scheduled_departure": "23:42",
-            "arrival": "23:53",
-            "departurePlatform_Streatham": "4",
-            "arrivalPlatform_Clapham": "14",
+            "destination": "East Croydon",
+            "departure": "00:02",
+            "scheduled_departure": "00:02",
+            "arrival": "23:51",
+            "departurePlatform_Streatham": "3",
+            "arrivalPlatform_Clapham": "15",
             "operator": "N/A",
             "status": "On Time",
-            "serviceUid": "P26185",
+            "serviceUid": "P26188",
             "dateOfService": "2026-04-21"
         },
         "connections": [
@@ -36,8 +36,8 @@
         ],
         "totalDuration": "N/A",
         "arrivalTime": "N/A",
-        "departureTime": "23:42",
+        "departureTime": "00:02",
         "segment_id": 1,
-        "live_updated_at": "23:29:12"
+        "live_updated_at": "23:51:24"
     }
 ]
