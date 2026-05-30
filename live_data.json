@@ -10,15 +10,15 @@
         "first_leg": {
             "origin": "Streatham Common Rail Station",
             "destination": "London Victoria",
-            "departure": "23:32",
-            "scheduled_departure": "23:32",
-            "arrival": "23:42",
+            "departure": "00:20",
+            "scheduled_departure": "00:20",
+            "arrival": "00:30",
             "departurePlatform_Streatham": "2",
             "arrivalPlatform_Clapham": "14",
             "operator": "N/A",
             "status": "On Time",
-            "serviceUid": "G27258",
-            "dateOfService": "2026-05-30"
+            "serviceUid": "79401",
+            "dateOfService": "2026-05-31"
         },
         "connections": [
             {
@@ -36,8 +36,8 @@
         ],
         "totalDuration": "N/A",
         "arrivalTime": "N/A",
-        "departureTime": "23:32",
+        "departureTime": "00:20",
         "segment_id": 1,
-        "live_updated_at": "23:05:22"
+        "live_updated_at": "23:30:09"
     }
 ]
