@@ -10,14 +10,14 @@
         "first_leg": {
             "origin": "Streatham Common Rail Station",
             "destination": "London Victoria",
-            "departure": "13:50",
-            "scheduled_departure": "13:50",
-            "arrival": "14:00",
+            "departure": "16:10",
+            "scheduled_departure": "16:10",
+            "arrival": "16:19",
             "departurePlatform_Streatham": "2",
             "arrivalPlatform_Clapham": "14",
             "operator": "N/A",
             "status": "On Time",
-            "serviceUid": "G27287",
+            "serviceUid": "C18687",
             "dateOfService": "2026-07-03"
         },
         "connections": [
@@ -36,23 +36,23 @@
         ],
         "totalDuration": "N/A",
         "arrivalTime": "N/A",
-        "departureTime": "13:50",
+        "departureTime": "16:10",
         "segment_id": 1,
-        "live_updated_at": "13:30:40"
+        "live_updated_at": "15:53:08"
     },
     {
         "type": "Live RTT Update (Dual API)",
         "first_leg": {
             "origin": "Streatham Common Rail Station",
             "destination": "London Victoria",
-            "departure": "14:20",
-            "scheduled_departure": "14:20",
-            "arrival": "14:30",
+            "departure": "16:20",
+            "scheduled_departure": "16:20",
+            "arrival": "16:30",
             "departurePlatform_Streatham": "2",
             "arrivalPlatform_Clapham": "14",
             "operator": "N/A",
             "status": "On Time",
-            "serviceUid": "G27294",
+            "serviceUid": "G27322",
             "dateOfService": "2026-07-03"
         },
         "connections": [
@@ -71,23 +71,23 @@
         ],
         "totalDuration": "N/A",
         "arrivalTime": "N/A",
-        "departureTime": "14:20",
+        "departureTime": "16:20",
         "segment_id": 2,
-        "live_updated_at": "13:30:40"
+        "live_updated_at": "15:53:08"
     },
     {
         "type": "Live RTT Update (Dual API)",
         "first_leg": {
             "origin": "Streatham Common Rail Station",
             "destination": "Watford Junction",
-            "departure": "14:25",
-            "scheduled_departure": "14:25",
-            "arrival": "14:33",
+            "departure": "16:25",
+            "scheduled_departure": "16:25",
+            "arrival": "16:33",
             "departurePlatform_Streatham": "2",
             "arrivalPlatform_Clapham": "16",
             "operator": "N/A",
             "status": "On Time",
-            "serviceUid": "G27753",
+            "serviceUid": "G27757",
             "dateOfService": "2026-07-03"
         },
         "connections": [
@@ -106,23 +106,23 @@
         ],
         "totalDuration": "N/A",
         "arrivalTime": "N/A",
-        "departureTime": "14:25",
+        "departureTime": "16:25",
         "segment_id": 3,
-        "live_updated_at": "13:30:40"
+        "live_updated_at": "15:53:08"
     },
     {
         "type": "Live RTT Update (Dual API)",
         "first_leg": {
             "origin": "Streatham Common Rail Station",
             "destination": "London Victoria",
-            "departure": "14:50",
-            "scheduled_departure": "14:50",
-            "arrival": "15:00",
+            "departure": "16:40",
+            "scheduled_departure": "16:40",
+            "arrival": "16:49",
             "departurePlatform_Streatham": "2",
             "arrivalPlatform_Clapham": "14",
             "operator": "N/A",
             "status": "On Time",
-            "serviceUid": "G27301",
+            "serviceUid": "W27751",
             "dateOfService": "2026-07-03"
         },
         "connections": [
@@ -141,23 +141,23 @@
         ],
         "totalDuration": "N/A",
         "arrivalTime": "N/A",
-        "departureTime": "14:50",
+        "departureTime": "16:40",
         "segment_id": 4,
-        "live_updated_at": "13:30:40"
+        "live_updated_at": "15:53:08"
     },
     {
         "type": "Live RTT Update (Dual API)",
         "first_leg": {
             "origin": "Streatham Common Rail Station",
             "destination": "London Victoria",
-            "departure": "15:20",
-            "scheduled_departure": "15:20",
-            "arrival": "15:30",
+            "departure": "16:50",
+            "scheduled_departure": "16:50",
+            "arrival": "17:00",
             "departurePlatform_Streatham": "2",
             "arrivalPlatform_Clapham": "14",
             "operator": "N/A",
             "status": "On Time",
-            "serviceUid": "G27308",
+            "serviceUid": "G27330",
             "dateOfService": "2026-07-03"
         },
         "connections": [
@@ -176,8 +176,8 @@
         ],
         "totalDuration": "N/A",
         "arrivalTime": "N/A",
-        "departureTime": "15:20",
+        "departureTime": "16:50",
         "segment_id": 5,
-        "live_updated_at": "13:30:40"
+        "live_updated_at": "15:53:08"
     }
 ]
